@@ -4,7 +4,7 @@ const fs = require('fs');
 const apiUrl = 'https://perenual.com/api/species-list';
 const apiKey = 'sk-h1y9650afd30ac0db2194'; // Replace with your actual API key
 const perPage = 30; // Number of items per page
-let currentPage = 1;
+let currentPage = 101;
 let data = [];
 
 const fetchData = async (page) => {
@@ -51,8 +51,8 @@ const saveDataToJsonFile = () => {
     data: data,
   };
 
-  fs.writeFileSync('combined_data.json', JSON.stringify(jsonData, null, 2));
-  console.log('Data retrieval completed and saved to combined_data.json.');
+  fs.writeFileSync('combined_data2.json', JSON.stringify(jsonData, null, 2));
+  console.log('Data retrieval completed and saved to combined_data2.json.');
 };
 
 fetchAllData().then(() => {

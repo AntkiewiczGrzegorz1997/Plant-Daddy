@@ -46,8 +46,6 @@ CREATE TABLE User_Plants (
   */
 
 
-
-
 CREATE TABLE Plants (
   ID varchar(10) PRIMARY KEY,
   full_name varchar(200),
@@ -55,14 +53,11 @@ CREATE TABLE Plants (
   other_name varchar(200),
   image_url varchar(500),
   sunlight varchar(200),
-  
+  watering varchar(20)
 );
-
 
 /*   FOREIGN KEY (ID) REFERENCES User_Plants(ID)
   */
-
-
 
 
 CREATE TABLE Uploaded_Images (
