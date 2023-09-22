@@ -1,10 +1,12 @@
 import React from 'react';
 
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-export default function UploadWidgetContainer() {
+export default function UploadWidgetContainer({ onImageUpload }) {
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
+
+  const imageArr = [];
 
   useEffect(() => {
     cloudinaryRef.current = window.cloudinary;
@@ -14,6 +16,7 @@ export default function UploadWidgetContainer() {
         uploadPreset: 'bspqor5d',
         apiKey: '733433717337262',
         folder: 'plants', // Add your Cloudinary API key here
+        multiple: true, // Enable multiple file selection
       },
       function (error, result) {
         if (!error && result && result.event === 'success') {
@@ -23,11 +26,15 @@ export default function UploadWidgetContainer() {
           // Set the URL in the hidden input field
           document.getElementById('uploadedImageUrl').value = imageUrl;
 
-          console.log(imageUrl); // You can log the URL if needed
+          imageArr.push(imageUrl);
+
+          onImageUpload(imageArr);
+
+          // You can log the URL if needed
         }
       }
     );
-  }, []);
+  }, [onImageUpload]);
 
   const handleUploadClick = (e) => {
     e.preventDefault(); // Prevent form submission

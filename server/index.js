@@ -9,10 +9,21 @@ const app = express();
 
 const PORT = 3000;
 
+// const corsConfig = {
+//   origin: 'http://localhost:3000',
+//   credentials: true,
+// };
+
 //app.use(express.static(conf.clientPath));
-app.use(express.json());
+// app.use(cors(corsConfig));
 app.use(cors());
+app.use(express.json());
+
 app.use(router);
+
+app.get('*', (req, res) => {
+  res.status(404).send('Sorry, not found 😞');
+});
 
 //Launch with IFFY
 

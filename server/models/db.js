@@ -11,6 +11,7 @@ const db = pgp(connectionString);
 module.exports = {
   db,
   pgp,
+  connectionString,
 };
 
 // // Example: Select all rows from a table

@@ -200,3 +200,75 @@ form > button {
   color: black; /* Change this to your desired text color */
   width: 20vw;
 }
+
+.Autocomplete {
+}
+
+.test {
+}
+
+.AddPlantHeader {
+  background-color: var(--beige);
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-icon {
+  background-color: var(--brown);
+}
+
+input {
+  height: 5vh;
+  background-color: var(--light-green);
+  border-width: 0;
+}
+
+.chosenImg {
+  height: 20vh;
+  width: auto;
+}
+.image-container {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px; /* Adjust as needed */
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red; /* Button background color */
+  color: white; /* Button text color */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .delete-button {
+  opacity: 1; /* Show on hover */
+}
+
+.plant-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 2vh;
+}
+
+.userPlants-big {
+  height: 15vh;
+}
+
+.userPlants-small {
+  height: 10vh;
+}
+
+/* Registratiom */
+
+.registration-page {
+  display: flex;
+  flex-direction: column;
+}

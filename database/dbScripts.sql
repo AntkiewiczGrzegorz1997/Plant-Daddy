@@ -33,11 +33,9 @@ CREATE TABLE User_Plants (
   age int, 
   watering varchar(20),
   sunlight varchar(200),
-  icon_ID int,
+  icon_ID varchar(200),
   PRIMARY KEY (user_ID, plant_ID),
  
-
-  
 );
 
 /*   FOREIGN KEY (user_ID) REFERENCES Users(user_ID),
