@@ -9,14 +9,13 @@ const app = express();
 
 const PORT = 3000;
 
-// const corsConfig = {
-//   origin: 'http://localhost:3000',
-//   credentials: true,
-// };
+const corsConfig = {
+  origin: 'http://localhost:3001',
+  credentials: true,
+};
 
-//app.use(express.static(conf.clientPath));
-// app.use(cors(corsConfig));
-app.use(cors());
+app.use(cors(corsConfig));
+//app.use(cors());
 app.use(express.json());
 
 app.use(router);

@@ -42,7 +42,7 @@ export default function UploadWidgetContainer({ onImageUpload }) {
   };
 
   return (
-    <button onClick={handleUploadClick}>
+    <button onClick={handleUploadClick} className='widgetUpload'>
       <img src='/add_photo_alternate_outlined.svg' alt='buttonpng' border='0' />
     </button>
   );

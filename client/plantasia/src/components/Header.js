@@ -11,21 +11,16 @@ export default function Header() {
       <div className='Username'> Username </div>
       <div className='hamburger'>
         <div onClick={toggleMenu}>
-          {!menuOpen ? (
+          {!menuOpen && (
             <>
               <span className='bar'></span>
               <span className='bar'></span>
               <span className='bar'></span>
             </>
-          ) : (
-            <div id='mdiv'>
-              <div class='mdiv'>
-                <div class='md'></div>
-              </div>
-            </div>
           )}
         </div>
       </div>
+      {menuOpen && <HamburgerMenu onClose={toggleMenu} pageName={'profile'} />}
     </div>
   );
 }

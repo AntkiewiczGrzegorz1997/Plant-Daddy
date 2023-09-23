@@ -2,11 +2,17 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import AddPlant from './components/AddPlant';
+import React, { useState } from 'react';
 
 import PlantContainer from './components/PlantContainer';
 import { Route, Routes } from 'react-router-dom';
+import auth from './utils/auth';
+import Registration from './components/Registration';
+import Login from './components/Login';
 
 function App() {
+  const initialState = auth.isAuthenticated();
+  const [isAuthenticated, setIsAuthenticated] = useState(initialState);
   return (
     <Routes>
       <Route
@@ -25,6 +31,14 @@ function App() {
         }
       />
       <Route path='/profile/addnewplant' element={<AddPlant />} />
+      <Route
+        path='/signup'
+        element={<Registration setIsAuthenticated={setIsAuthenticated} />}
+      />
+      <Route
+        path='/login'
+        element={<Login setIsAuthenticated={setIsAuthenticated} />}
+      />
     </Routes>
   );
 }

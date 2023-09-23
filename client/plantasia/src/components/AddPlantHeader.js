@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import HamburgerMenu from './HamburgerMenu';
 
 export default function AddPlantHeader() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
   return (
-    <div className='AddPlantHeader'>
-      <div>Username</div>
-      <div>Go Back</div>
+    <div className='navbar-flex'>
+      <div className='Username'> Username </div>
+      <div className='hamburger'>
+        <div onClick={toggleMenu}>
+          {!menuOpen && (
+            <>
+              <span className='bar'></span>
+              <span className='bar'></span>
+              <span className='bar'></span>
+            </>
+          )}
+        </div>
+      </div>
+      {menuOpen && (
+        <HamburgerMenu onClose={toggleMenu} pageName={'addnewplant'} />
+      )}
     </div>
   );
 }

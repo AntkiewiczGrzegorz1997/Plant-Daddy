@@ -32,7 +32,9 @@ export default function AddPlant() {
   useEffect(() => {
     // Simulate fetching all names from the database
     const fetchAllNames = async () => {
+      console.log('here1');
       const fetchedNames = await getAllPlantNames();
+      console.log('here2');
       setNames(fetchedNames.map((name) => ({ label: name.full_name }))); // Convert names to the required format
     };
 
@@ -75,10 +77,11 @@ export default function AddPlant() {
     plant.plant_size = event.target.elements.size.value;
     plant.age = event.target.elements.date.value;
     plant.watering = plantInfo.watering;
-    plant.sunlight = plantInfo.watering;
+    plant.sunlight = plantInfo.sunlight;
     plant.icon_ID = selectedImageUrl;
+    plant.image_url = plantInfo.image_url;
 
-    await addPlant(plant);
+    await addPlant(plant, localStorage.accessToken);
 
     const uploadedImg = {};
 
@@ -119,11 +122,14 @@ export default function AddPlant() {
       <form className='plant-upload-form' onSubmit={handleSubmit}>
         <h1>Add a new plant</h1>
 
-        <UploadWidgetContainer onImageUpload={handleImageUpload} />
-        <div>
-          {/* Display the uploaded image */}
-          {uploadedCloudinaryImage.length > 0 &&
-            uploadedCloudinaryImage.map(
+        <UploadWidgetContainer
+          className='UploadWidgetContainer'
+          onImageUpload={handleImageUpload}
+        />
+        {uploadedCloudinaryImage.length > 0 && (
+          <div className='image-scroll'>
+            {/* Display the uploaded image */}
+            {uploadedCloudinaryImage.map(
               (image) => (
                 <div key={image} className='image-container'>
                   {console.log(image)}
@@ -139,18 +145,50 @@ export default function AddPlant() {
 
               //
             )}
-        </div>
+          </div>
+        )}
 
         <div className='form-wrapper'>
           <div className='form-first-column'>
-            {/* ... other form fields */}
-            <TextField className='test' label='Name' name='name' />
-            <input
-              key='12'
-              type='month'
-              placeholder='Date...'
-              name='date'
-            ></input>
+            <div>
+              {/* ... other form fields */}
+              <TextField
+                sx={{
+                  width: '100%',
+                  borderRadius: '4px',
+                  backgroundColor: '#dde0bd',
+                  borderColor: '#675044',
+                }}
+                className='test'
+                label='Name'
+                name='name'
+              />
+            </div>
+            <div>
+              <TextField
+                sx={{
+                  width: '100%',
+                }}
+                id='date'
+                type='month'
+                label='Since When'
+                name='date'
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+
+            <div>
+              <Button
+                onClick={openImagePopup}
+                variant='contained'
+                sx={{ backgroundColor: '#b89685' }}
+                name='icon'
+              >
+                Choose plant icon
+              </Button>
+            </div>
 
             <div>
               <Button
@@ -169,62 +207,67 @@ export default function AddPlant() {
             />
           </div>
           <div className='form-second-column'>
-            <Autocomplete
-              ref={sizeAutocompleteRef}
-              ListboxProps={{
-                sx: {
-                  backgroundColor: 'green',
-                  // Add more styles as needed
-                },
-              }}
-              className='Autocomplete'
-              disablePortal
-              id='combo-box-demo'
-              options={sizes}
-              sx={{ width: 300 }}
-              key='10'
-              renderInput={(params) => (
-                <TextField
-                  className='test'
-                  {...params}
-                  label='Size'
-                  name='size'
-                />
-              )}
-            />
-
-            <Autocomplete
-              ref={speciesAutocompleteRef}
-              ListboxProps={{
-                sx: {
-                  backgroundColor: 'lightblue',
-                  // Add more styles as needed
-                },
-              }}
-              className='Autocomplete'
-              disablePortal
-              id='combo-box-demo'
-              options={names}
-              sx={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField
-                  className='test'
-                  {...params}
-                  label='Species'
-                  name='fullName'
-                />
-              )}
-            />
-
             <div>
-              <Button
-                onClick={openImagePopup}
-                variant='contained'
-                sx={{ backgroundColor: '#675044' }}
-                name='icon'
-              >
-                Choose plant icon
-              </Button>
+              <Autocomplete
+                ref={sizeAutocompleteRef}
+                ListboxProps={{
+                  sx: {
+                    backgroundColor: '#dde0bd',
+                    // Add more styles as needed
+                  },
+                }}
+                className='Autocomplete'
+                disablePortal
+                id='combo-box-demo'
+                options={sizes}
+                sx={{
+                  width: '300',
+                  borderRadius: '4px',
+                  backgroundColor: '#dde0bd',
+                  borderColor: '#675044',
+                }}
+                key='10'
+                renderInput={(params) => (
+                  <TextField
+                    className='test'
+                    {...params}
+                    label='Size'
+                    name='size'
+                  />
+                )}
+              />
+            </div>
+            <div>
+              <Autocomplete
+                ref={speciesAutocompleteRef}
+                ListboxProps={{
+                  sx: {
+                    backgroundColor: '#dde0bd',
+
+                    // Add more styles as needed
+                  },
+                }}
+                className='Autocomplete'
+                disablePortal
+                id='combo-box-demo'
+                options={names}
+                sx={{
+                  width: '100%',
+                  borderRadius: '4px',
+                  backgroundColor: '#dde0bd',
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    sx={{
+                      width: '100%',
+                    }}
+                    className='test'
+                    {...params}
+                    label='Species'
+                    name='fullName'
+                  />
+                )}
+              />
             </div>
 
             {isImagePopupOpen && (
@@ -245,7 +288,7 @@ export default function AddPlant() {
               </div>
             )}
 
-            {selectedImageUrl && (
+            {selectedImageUrl.length > 0 && (
               <div className='selected-image'>
                 <img src={selectedImageUrl} alt='Selected' />
               </div>

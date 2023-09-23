@@ -73,11 +73,76 @@ const profile = async (req, res) => {
   try {
     const { user_id, firstName, lastName } = req.user;
     const user = { user_id, firstName, lastName };
-    res.status(200).send(user);
+
+    //const user_ID = 1;
+    pool
+      .query('SELECT * FROM User_Plants WHERE user_ID = $1', [user_id])
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching user plants:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      });
   } catch {
     res.status(404).send({ error, message: 'Resource not found' });
   }
 };
+
+async function addUserPlant(req, res) {
+  const {
+    plant_ID,
+    ID,
+    plant_name,
+    full_name,
+    scientific_name,
+    plant_description,
+    plant_size,
+    age,
+    watering,
+    sunlight,
+    icon_ID,
+    image_url,
+  } = req.body;
+
+  try {
+    user_ID = req.user.user_id;
+
+    const existingPlant = await db.oneOrNone(
+      'SELECT * FROM User_Plants WHERE user_ID = $1 AND plant_ID = $2',
+      [user_ID, plant_ID]
+    );
+
+    if (existingPlant) {
+      return res
+        .status(409)
+        .json({ error: 'Plant already exists for the user' });
+    }
+    // Insert a new plant into User_Plants table
+    db.none(
+      `INSERT INTO User_Plants (user_ID, plant_ID, ID, plant_name, full_name, scientific_name, plant_description, plant_size, age, watering, sunlight, icon_ID, image_url)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
+      [
+        user_ID,
+        plant_ID,
+        ID,
+        plant_name,
+        full_name,
+        scientific_name,
+        plant_description,
+        plant_size,
+        age,
+        watering,
+        sunlight,
+        icon_ID,
+        image_url,
+      ]
+    ).then(res.status(200).json({ message: 'Plant added successfully' }));
+  } catch (error) {
+    console.error('Error adding plant:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 
 const logout = (req, res) => {
   // REMOVE-START
@@ -86,4 +151,4 @@ const logout = (req, res) => {
   // REMOVE-END
 };
 
-module.exports = { create, login, profile, logout };
+module.exports = { create, login, profile, logout, addUserPlant };

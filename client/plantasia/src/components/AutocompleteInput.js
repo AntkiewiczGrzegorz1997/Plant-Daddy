@@ -5,18 +5,18 @@ export default function AutocompleteInput() {
   const [allNames, setAllNames] = useState([]); // Store all names from the database
   const [filteredNames, setFilteredNames] = useState([]); // Store filtered names based on input
 
+  // Simulate fetching all names from the database
+  const fetchAllNames = async () => {
+    const namesArr = [];
+    const names = await getAllPlantNames();
+    names.forEach((elem) => {
+      namesArr.push(elem.full_name);
+    });
+
+    setAllNames(namesArr);
+  };
+
   useEffect(() => {
-    // Simulate fetching all names from the database
-    const fetchAllNames = async () => {
-      const namesArr = [];
-      const names = await getAllPlantNames();
-      names.forEach((elem) => {
-        namesArr.push(elem.full_name);
-      });
-
-      setAllNames(namesArr);
-    };
-
     fetchAllNames();
   }, []);
 
