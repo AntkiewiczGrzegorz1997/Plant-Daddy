@@ -3,6 +3,9 @@ import './App.css';
 import Header from './components/Header';
 import AddPlant from './components/AddPlant';
 import React, { useState } from 'react';
+import HomePage from './components/HomePage';
+
+import Logout from './components/Logout';
 
 import PlantContainer from './components/PlantContainer';
 import { Route, Routes } from 'react-router-dom';
@@ -39,6 +42,13 @@ function App() {
         path='/login'
         element={<Login setIsAuthenticated={setIsAuthenticated} />}
       />
+      <Route path='/' element={<HomePage />} />
+      <Route
+        path='/logout'
+        element={<Logout setIsAuthenticated={setIsAuthenticated} />}
+      />
+
+      {/* <Route path='/description' element={<Description />} /> */}
     </Routes>
   );
 }

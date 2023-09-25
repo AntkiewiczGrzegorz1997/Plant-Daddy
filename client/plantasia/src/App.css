@@ -1,9 +1,11 @@
 :root {
-  --brown: #675044;
-  --light-brown: #b89685;
-  --beige: #ebe3da;
-  --light-green: #dde0bd;
-  --green: #d0d1ac;
+  --light-purple: #a799b7;
+  --purple: #9888a5;
+  --violet: #776472;
+  --light-green: #445552;
+  --green: #294d4a;
+  --font-color: white;
+  --font-color-less: #bbb2b8;
 
   --small: 10px;
   --medium: 20px;
@@ -11,21 +13,24 @@
 }
 
 .Header {
-  background-color: var(--green);
-  height: 10vh;
+  background-color: var(--purple);
+  /* height: 10vh; */
   width: 100vw;
+  border-bottom: solid 2px white;
 }
 
 .PlantContainer {
-  background-color: var(--beige);
+  background-color: var(--violet);
   height: 90vh;
   width: 100vw;
 }
 
+html,
 body {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  font-family: 'Quattrocento', serif;
 }
 
 .App {
@@ -41,37 +46,59 @@ body {
 
 .Username {
   margin-left: 2vw;
-  color: var(--light-brown);
+  color: var(--light-green);
 }
 
 .hamburger {
   display: block;
   cursor: pointer;
-  margin-top: 1.7vh;
+  margin-top: -1.6vh;
+  align-items: center;
+}
+.menu-icon {
+  margin-top: 1vh;
+  margin-bottom: -0.5vh;
+  transform: scale(0.5);
 }
 
-.bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  border-radius: 5px;
+.material-symbols-outlined {
+  position: relative;
+  top: -4.5vh; /* Adjust this value to move the span element up */
+  transform: scale(1.4);
+  right: 1.5vw;
+}
+.navbar-button {
+  background-color: var(--violet);
+  color: var(--font-color-less);
+  border: none; /* Remove the border */
+  padding: 0; /* Remove padding if any */
+  margin: 2vw; /* Remove margin if any */
+  outline: none; /* Remove the outline when focused */
+  cursor: pointer; /* Add a pointer cursor for interaction */
+  text-decoration: none; /* Remove any text decoration if present */
+  font-size: 20px;
+  transition: 200ms ease-out opacity 200ms ease-out background-color;
+  text-align: center;
+}
 
-  margin-right: 2vw;
-  margin-top: 1vh;
-
-  background-color: var(--light-brown);
+.navbar-button:hover {
+  opacity: 1; /* Adjust the opacity value as desired */
+  color: var(--font-color);
 }
 
 .navbar-flex {
   display: flex;
   justify-content: space-between;
+  background-color: var(--violet);
+  border-bottom: solid 1px white;
+  width: 100%;
 }
 
 .navbar {
-  background-color: var(--green);
+  background-color: var(--violet);
   border-radius: 5px;
   width: 20vw;
-  height: 20vh;
+  height: 30vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1001; /* Ensure it's above the overlay */
   position: absolute;
@@ -85,7 +112,7 @@ body {
 
 .link-component {
   cursor: pointer;
-  color: var(--brown);
+  color: var(--green);
 }
 
 .navbar > div:nth-child(-n + 2) {
@@ -95,7 +122,7 @@ body {
 .menu-nav {
   list-style: none;
   position: absolute;
-  background: var(--light-green);
+  background: var(--light-purple);
   overflow: hidden;
   z-index: 9;
   font-size: 18px;
@@ -115,7 +142,7 @@ body {
 
 .menu-nav.show-menu > div {
   margin: 2vh 1vw;
-  border-bottom: 1px var(--beige);
+  border-bottom: 1px var(--violet);
 }
 
 /*code for close icon taken from taken from https://stackoverflow.com/questions/18611195/x-close-button-only-using-css */
@@ -136,7 +163,7 @@ body {
   width: 0.6vh;
   border-radius: 5px;
   margin-left: 12px;
-  background-color: var(--light-brown);
+  background-color: var(--light-green);
   transform: rotate(45deg);
   z-index: 1;
 }
@@ -145,7 +172,7 @@ body {
   height: 4.5vh;
   width: 0.6vh;
   border-radius: 5px;
-  background-color: var(--light-brown);
+  background-color: var(--light-green);
   transform: rotate(90deg);
   z-index: 2;
 }
@@ -153,28 +180,42 @@ body {
 .AddPlant {
   height: 100vh;
   width: 100vw;
-  background-color: var(--light-green);
+  background-color: var(--violet);
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .AddPlantHeader {
-  background-color: var(--green);
-  height: 10vh;
+  background-color: var(--purple);
   width: 100vw;
 }
 
 .plant-upload-form {
-  background-color: var(--green);
-  width: 60vw;
-  height: 75vh;
+  background-color: var(--violet);
+  width: 50vw;
+  margin-top: 4vh;
+  height: 80vh;
   border-radius: 3px;
-  color: var(--brown);
-  margin-left: 25vw;
-  margin-top: 10vh;
+  color: var(--green);
+  border: solid var(--font-color) 1px;
+
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
+
+.plant-upload-form > p {
+  margin-top: 4vh;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 2vh;
+  padding-bottom: 3vh;
+  font-size: 30px;
+  border-bottom: solid 1px white;
+}
+
 .form-wrapper {
   display: flex;
   flex-direction: row;
@@ -185,11 +226,12 @@ input {
   justify-content: center;
 }
 form > button {
-  background-color: var(--light-green);
+  background-color: var(--violet);
   border: 0px;
   height: 10vh;
   width: 10vw;
   cursor: pointer;
+  margin-top: 2vh;
 }
 
 .icons-flex {
@@ -206,65 +248,58 @@ form > button {
   display: flex;
   flex-wrap: wrap;
 
-  background-color: #ffffff;
+  background-color: var(--purple);
   border: 1px solid #ccc;
   padding: 10px;
   z-index: 999; /* Ensure a high z-index to appear above other elements */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-#nameSuggestions option {
-  background-color: lightblue; /* Change this to your desired background color */
-  color: black; /* Change this to your desired text color */
-  width: 20vw;
-}
-
-.Autocomplete {
-}
-
-.test {
-}
-
 .AddPlantHeader {
-  background-color: var(--beige);
+  background-color: var(--violet);
   display: flex;
   justify-content: space-between;
 }
 
 .button-icon {
-  background-color: var(--brown);
+  background-color: var(--green);
 }
 
+.selected-image > img {
+  margin-top: 4vh;
+  margin-left: 4vw;
+}
 input {
   height: 5vh;
-  background-color: var(--light-green);
+  background-color: var(--light-purple);
   border-width: 0;
 }
 
 .chosenImg {
-  height: 20vh;
+  height: 19vh;
   width: auto;
 }
 .image-scroll {
   display: flex;
-  width: 60vw;
-
+  width: 50vw;
   height: 100%;
   overflow-x: scroll;
+  margin-top: -1vh;
 }
 
 .image-container {
   position: relative;
   display: inline-block;
-  margin-right: 10px; /* Adjust as needed */
+  margin-right: 10px;
+  height: 19vh;
 }
 
 .delete-button {
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: red; /* Button background color */
-  color: white; /* Button text color */
+  background-color: var(--green);
+  color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 50%;
@@ -281,7 +316,8 @@ input {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-top: 2vh;
+  padding-top: 3vh;
+  padding-left: 1vw;
 }
 
 .userPlants-big {
@@ -314,7 +350,7 @@ input {
   z-index: 1000; /* Ensure it's above everything else */
 }
 .popup {
-  background-color: var(--light-green);
+  background-color: var(--light-purple);
   padding: 20px;
   border-radius: 5px;
   width: 80vw;
@@ -358,7 +394,7 @@ input {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
-  background-color: var(--green);
+  background-color: var(--purple);
   padding: 2vh;
   margin-left: 2vh;
 }
@@ -399,12 +435,12 @@ input {
   height: 15vh;
   width: 15vw;
   border: solid 1px;
-  border-color: var(--brown);
+  border-color: var(--font-color);
   margin-bottom: 2vh;
 }
 
-form > * {
-  align-self: center;
+.widgetUpload > img {
+  transform: scale(0.7);
 }
 
 .calendar {
@@ -413,24 +449,34 @@ form > * {
 }
 
 .form-first-column > div {
-  margin: 2vh;
+  margin-bottom: 3vh;
+  margin-right: 1vw;
+  width: 20vw;
 }
 
 .form-second-column > div {
-  margin: 2vh;
+  margin-bottom: 3vh;
+  margin-left: 1vw;
+
+  width: 20vw;
 }
 .form-first-column {
-  width: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 21vw;
 }
 .form-second-column {
-  width: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 21vw;
 }
 
 /*Trying the Register*/
 
 * {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #594f4f;
+  color: white;
 }
 
 nav {
@@ -491,7 +537,7 @@ input {
   margin: 1rem 0;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  background: #c06c84;
+  background: var(--green);
   color: #fafafa;
   font-size: 1rem;
 }
@@ -510,4 +556,182 @@ input {
 .form-submit:disabled,
 .confirm-btn:disabled {
   background: #c3c3c3;
+}
+
+.top-right-button {
+  position: absolute;
+  top: 10px; /* Adjust the top position as needed */
+  right: 10px; /* Adjust the right position as needed */
+  background-color: #007bff; /* Background color for the button */
+  color: #fff; /* Text color for the button */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.top-right-button:hover {
+  background-color: #0056b3; /* Change the background color on hover */
+}
+
+/*Homepage*/
+
+.homepage {
+  background-color: var(--violet);
+  display: flex;
+  flex-direction: column;
+}
+.homepage-button {
+  background-color: var(--violet);
+  color: var(--font-color-less);
+  border: none; /* Remove the border */
+  padding: 0; /* Remove padding if any */
+  margin: 2vw; /* Remove margin if any */
+  outline: none; /* Remove the outline when focused */
+  cursor: pointer; /* Add a pointer cursor for interaction */
+  text-decoration: none; /* Remove any text decoration if present */
+  font-size: 20px;
+  transition: 200ms ease-out opacity 200ms ease-out background-color;
+}
+.brand-image {
+  transform: scale(0.7);
+  margin-bottom: 10vh;
+
+  width: 100vw;
+  height: auto;
+}
+
+.homepage-navbar {
+  display: flex;
+  justify-content: center;
+  margin-right: 2vw;
+  background-color: var(--violet);
+}
+
+.text-container {
+  margin-top: -10vh;
+  font-family: 'Fanwood Text', serif;
+  font-weight: 400;
+  line-height: 1.755em;
+  letter-spacing: 0em;
+  margin-left: 28vw;
+  margin-right: 28vw;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+.text-container :nth-child(1) {
+  font-family: 'Quattrocento', serif;
+  font-weight: 400;
+  line-height: 1em;
+  letter-spacing: 0.03em;
+  text-align: center;
+  font-size: 30px;
+}
+
+.clicked {
+  color: var(--font-color);
+}
+.homepage-button:hover {
+  opacity: 1; /* Adjust the opacity value as desired */
+  color: var(--font-color);
+}
+.loginpage {
+  background-color: var(--violet);
+  height: 100vh;
+}
+
+.video-container {
+  width: 640px; /* Adjust width as needed */
+  height: 357px; /* Remove 1 cm (10 mm) from the bottom */
+  overflow: hidden;
+  transform: scale(1.42);
+  margin-left: -1.92vw;
+}
+
+.login-content {
+  padding-top: 15vh;
+  padding-bottom: 10vh;
+  padding-left: 4vw;
+
+  display: flex;
+  margin-left: 0;
+}
+
+.form-login {
+  padding: 10vh 5vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: auto;
+  border-radius: 6px;
+}
+
+.form-submit .login {
+  background-color: var(--green);
+}
+.text-login {
+  background-color: white;
+
+  width: 30vw;
+}
+
+.regipage {
+  height: 100vh;
+  background-color: var(--violet);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*Registration*/
+
+.form-signup {
+  padding-top: 20vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-submit .signup {
+  background-color: var(--green);
+}
+
+.form-container-signup {
+  border: solid 1px white;
+  border-radius: 5px;
+  width: 35vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3vh;
+}
+
+.form-regi-title {
+  text-align: center;
+  width: 100%;
+  border-bottom: solid 1px white;
+}
+
+.Username {
+  margin-top: 4vh;
+
+  font-size: var(--large);
+  font-family: 'Fanwood Text', serif;
+  /* font-family: 'Quattrocento', serif; */
+
+  color: var(--font-color);
+}
+
+.MuiIconButton-root svg {
+  fill: white;
+}
+
+.Logout {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--violet);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

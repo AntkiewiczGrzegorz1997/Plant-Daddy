@@ -71,14 +71,40 @@ const login = async (req, res) => {
 
 const profile = async (req, res) => {
   try {
-    const { user_id, firstName, lastName } = req.user;
-    const user = { user_id, firstName, lastName };
+    // const { user_id, firstName, lastName } = req.user;
+    // const user = { user_id, firstName, lastName };
+    user_ID = req.user.user_id;
 
     //const user_ID = 1;
     pool
-      .query('SELECT * FROM User_Plants WHERE user_ID = $1', [user_id])
+      .query('SELECT * FROM User_Plants WHERE user_ID = $1', [
+        parseInt(user_ID),
+      ])
       .then((data) => {
-        res.status(200).json(data);
+        return res.status(200).json(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching user plants:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      });
+  } catch {
+    res.status(404).send({ error, message: 'Resource not found' });
+  }
+};
+
+const username = async (req, res) => {
+  try {
+    // const { user_id, firstName, lastName } = req.user;
+    // const user = { user_id, firstName, lastName };
+    user_ID = req.user.user_id;
+
+    //const user_ID = 1;
+    pool
+      .query('SELECT username FROM users WHERE user_ID = $1', [
+        parseInt(user_ID),
+      ])
+      .then((data) => {
+        return res.status(200).json(data);
       })
       .catch((error) => {
         console.error('Error fetching user plants:', error);
@@ -151,4 +177,4 @@ const logout = (req, res) => {
   // REMOVE-END
 };
 
-module.exports = { create, login, profile, logout, addUserPlant };
+module.exports = { create, login, profile, logout, addUserPlant, username };

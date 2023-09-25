@@ -40,6 +40,8 @@ router.get('/imgs/:plant_id', getPlantImgs);
 router.post('/uploadImg', addImg); //delete when authentification present
 
 router.get('/profile', authMiddleware, userController.profile);
+router.get('/profile/username', authMiddleware, userController.username);
+
 //router.post('/uploadImg', authMiddleware, addImg);
 
 // Exports

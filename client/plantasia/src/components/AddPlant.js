@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import AddPlantHeader from './AddPlantHeader';
 import Button from '@mui/material/Button';
 import UploadWidgetContainer from './UploadWidgetContainer';
-
+import apiServiceJWT from '../ApiServiceJWT';
 import { getPlantInfo } from '../apiService';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday'; // Import the calendar icon
 
 import {
   getAllPlantNames,
@@ -120,7 +121,7 @@ export default function AddPlant() {
     <div className='AddPlant'>
       <AddPlantHeader />
       <form className='plant-upload-form' onSubmit={handleSubmit}>
-        <h1>Add a new plant</h1>
+        <p>Add a Plant</p>
 
         <UploadWidgetContainer
           className='UploadWidgetContainer'
@@ -156,8 +157,31 @@ export default function AddPlant() {
                 sx={{
                   width: '100%',
                   borderRadius: '4px',
-                  backgroundColor: '#dde0bd',
-                  borderColor: '#675044',
+                  backgroundColor: '#776472',
+                  '& input': {
+                    color: 'white',
+                  },
+                  '& .MuiInputBase-input': {
+                    color: 'white',
+                  },
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#FFFFFF !important',
+                  },
+                  '& .MuiInputLabel-root': {
+                    color: 'white',
+                  },
+                  '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: '#FFFFFF !important',
+                    },
+                  '& .MuiIconButton-root': {
+                    color: 'white !important', // Change the calendar icon color to white
+                  },
+                  '& .MuiIconButton-root svg': {
+                    fill: 'white',
+                    color: 'white',
+                  },
+                  '& svg': { color: 'white' },
                 }}
                 className='test'
                 label='Name'
@@ -168,6 +192,32 @@ export default function AddPlant() {
               <TextField
                 sx={{
                   width: '100%',
+                  borderRadius: '4px',
+                  backgroundColor: '#776472',
+                  '& input': {
+                    color: 'white',
+                  },
+                  '& .MuiInputBase-input': {
+                    color: 'white',
+                  },
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#FFFFFF !important',
+                  },
+                  '& .MuiInputLabel-root': {
+                    color: 'white',
+                  },
+                  '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: '#FFFFFF !important',
+                    },
+                  '& .MuiIconButton-root': {
+                    color: 'white !important', // Change the calendar icon color to white
+                  },
+                  '& .MuiIconButton-root svg': {
+                    fill: 'white',
+                    color: 'white',
+                  },
+                  '& svg': { color: 'white' }, // Change the color of the calendar icon
                 }}
                 id='date'
                 type='month'
@@ -183,7 +233,7 @@ export default function AddPlant() {
               <Button
                 onClick={openImagePopup}
                 variant='contained'
-                sx={{ backgroundColor: '#b89685' }}
+                sx={{ backgroundColor: '#445552' }}
                 name='icon'
               >
                 Choose plant icon
@@ -194,7 +244,7 @@ export default function AddPlant() {
               <Button
                 type='submit'
                 variant='contained'
-                sx={{ backgroundColor: '#675044' }}
+                sx={{ backgroundColor: '#294d4a' }}
               >
                 Create
               </Button>
@@ -209,40 +259,10 @@ export default function AddPlant() {
           <div className='form-second-column'>
             <div>
               <Autocomplete
-                ref={sizeAutocompleteRef}
-                ListboxProps={{
-                  sx: {
-                    backgroundColor: '#dde0bd',
-                    // Add more styles as needed
-                  },
-                }}
-                className='Autocomplete'
-                disablePortal
-                id='combo-box-demo'
-                options={sizes}
-                sx={{
-                  width: '300',
-                  borderRadius: '4px',
-                  backgroundColor: '#dde0bd',
-                  borderColor: '#675044',
-                }}
-                key='10'
-                renderInput={(params) => (
-                  <TextField
-                    className='test'
-                    {...params}
-                    label='Size'
-                    name='size'
-                  />
-                )}
-              />
-            </div>
-            <div>
-              <Autocomplete
                 ref={speciesAutocompleteRef}
                 ListboxProps={{
                   sx: {
-                    backgroundColor: '#dde0bd',
+                    backgroundColor: '#445552',
 
                     // Add more styles as needed
                   },
@@ -260,11 +280,80 @@ export default function AddPlant() {
                   <TextField
                     sx={{
                       width: '100%',
+                      borderRadius: '4px',
+                      backgroundColor: '#776472',
+                      '& input': {
+                        color: 'white',
+                      },
+                      '& .MuiInputBase-input': {
+                        color: 'white',
+                      },
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        borderColor: '#FFFFFF !important',
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: 'white',
+                      },
+                      '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
+                        {
+                          borderColor: '#FFFFFF !important',
+                        },
                     }}
                     className='test'
                     {...params}
                     label='Species'
                     name='fullName'
+                  />
+                )}
+              />
+            </div>
+            <div>
+              <Autocomplete
+                ref={sizeAutocompleteRef}
+                ListboxProps={{
+                  sx: {
+                    backgroundColor: '#445552',
+                    // Add more styles as needed
+                  },
+                }}
+                className='Autocomplete'
+                disablePortal
+                id='combo-box-demo'
+                options={sizes}
+                sx={{
+                  width: '300',
+                  borderRadius: '4px',
+                  backgroundColor: '#dde0bd',
+                  borderColor: '#675044',
+                }}
+                key='10'
+                renderInput={(params) => (
+                  <TextField
+                    sx={{
+                      width: '100%',
+                      borderRadius: '4px',
+                      backgroundColor: '#776472',
+                      '& input': {
+                        color: 'white',
+                      },
+                      '& .MuiInputBase-input': {
+                        color: 'white',
+                      },
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        borderColor: '#FFFFFF !important',
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: 'white',
+                      },
+                      '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
+                        {
+                          borderColor: '#FFFFFF !important',
+                        },
+                    }}
+                    className='test'
+                    {...params}
+                    label='Size'
+                    name='size'
                   />
                 )}
               />

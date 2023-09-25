@@ -13,7 +13,9 @@ export default function PlantContainer() {
       const fetchedplants = await apiServiceJWT.profile(
         localStorage.accessToken
       );
-      setPlants(fetchedplants);
+
+      setPlants(fetchedplants.rows);
+
       // Convert names to the required format
     };
 
@@ -43,7 +45,7 @@ export default function PlantContainer() {
       {plants.length > 0 ? (
         plants.length > 100 ? (
           plants.map((plant) => (
-            <div key={plant} className='plant-container-single-small'>
+            <div key={plant.plant_id} className='plant-container-single-small'>
               <img
                 className={'userPlants-small rotateOnHover'}
                 src={plant.icon_id}
@@ -58,7 +60,7 @@ export default function PlantContainer() {
         ) : (
           //
           plants.map((plant) => (
-            <div key={plant} className='plant-container-single-big'>
+            <div key={plant.plant_id} className='plant-container-single-big'>
               <img
                 className={'userPlants-big rotateOnHover'}
                 src={plant.icon_id}

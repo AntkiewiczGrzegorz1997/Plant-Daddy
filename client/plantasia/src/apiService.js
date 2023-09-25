@@ -1,6 +1,8 @@
+import { apis } from './api-access';
+
+const apiUrl = apis.perenual.apiUrl;
+const apiKey = apis.perenual.apiKey;
 const url = 'http://localhost:3000';
-const apiUrl = 'https://perenual.com';
-const apiKey = 'sk-h1y9650afd30ac0db2194';
 
 export async function getAllPlantNames() {
   try {

@@ -10,19 +10,20 @@ export default function HamburgerMenu({ menuOpen, onClose, pageName }) {
 
       <nav className='navbar'>
         {pageName === 'profile' && (
-          <Link to='/profile/addnewplant' className='link-component'>
+          <Link to='/profile/addnewplant' className='navbar-button'>
             Add Plant
           </Link>
         )}
         {pageName === 'addnewplant' && (
-          <Link to='/profile' className='link-component'>
+          <Link to='/profile' className='navbar-button'>
             Go Back
           </Link>
         )}
 
-        <div>User Stats</div>
-        <div>Log out</div>
-        {/* Add more menu options as needed */}
+        <div className='navbar-button'>User Stats</div>
+        <Link to='/logout' className='navbar-button'>
+          Logout
+        </Link>
       </nav>
     </div>
   );

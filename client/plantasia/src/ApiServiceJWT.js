@@ -37,7 +37,28 @@ apiServiceJWT.profile = (accessToken) => {
       Authorization: `Bearer ${accessToken}`,
     },
   })
-    .then((res) => res.json())
+    .then(async (res) => {
+      const data = await res.json();
+
+      return data;
+    })
+    .catch((err) => console.log(err));
+};
+apiServiceJWT.username = (accessToken) => {
+  return fetch(`${BASE_URL}/profile/username`, {
+    method: 'GET',
+    credentials: 'include',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    },
+  })
+    .then(async (res) => {
+      const data = await res.json();
+
+      return data;
+    })
     .catch((err) => console.log(err));
 };
 

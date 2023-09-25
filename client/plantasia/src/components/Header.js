@@ -1,21 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HamburgerMenu from './HamburgerMenu';
+import apiServiceJWT from '../ApiServiceJWT';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [username, setUsername] = useState(''); // Store the images for the opened plant
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      const fetchedUsername = await apiServiceJWT.username(
+        localStorage.accessToken
+      );
+
+      setUsername(fetchedUsername.rows[0].username);
+    };
+    fetchUsername();
+  }, []);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
   return (
     <div className='navbar-flex'>
-      <div className='Username'> Username </div>
+      <div className='Username'>{username}</div>
       <div className='hamburger'>
         <div onClick={toggleMenu}>
           {!menuOpen && (
             <>
-              <span className='bar'></span>
-              <span className='bar'></span>
-              <span className='bar'></span>
+              <img
+                className='menu-icon'
+                src={'/menu-icon.png'}
+                alt='menu-icon'
+              />
+              <span class='material-symbols-outlined'>expand_more</span>
             </>
           )}
         </div>

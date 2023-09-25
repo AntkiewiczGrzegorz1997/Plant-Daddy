@@ -1,6 +1,9 @@
 import React from 'react';
-
 import { useState, useEffect, useRef } from 'react';
+
+import { apis } from '../api-access.js';
+const uploadPreset = apis.cloudinary.uploadPreset;
+const apiKey = apis.cloudinary.apiKey;
 
 export default function UploadWidgetContainer({ onImageUpload }) {
   const cloudinaryRef = useRef();
@@ -13,8 +16,8 @@ export default function UploadWidgetContainer({ onImageUpload }) {
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
         cloudName: 'dnzhttyev',
-        uploadPreset: 'bspqor5d',
-        apiKey: '733433717337262',
+        uploadPreset: uploadPreset,
+        apiKey: apiKey,
         folder: 'plants', // Add your Cloudinary API key here
         multiple: true, // Enable multiple file selection
       },
@@ -43,7 +46,7 @@ export default function UploadWidgetContainer({ onImageUpload }) {
 
   return (
     <button onClick={handleUploadClick} className='widgetUpload'>
-      <img src='/add_photo_alternate_outlined.svg' alt='buttonpng' border='0' />
+      <img src='/add-img-icon.png' alt='buttonpng' border='0' />
     </button>
   );
 }
