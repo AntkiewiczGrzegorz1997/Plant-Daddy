@@ -10,3 +10,11 @@ code {
 html {
   background-color: #776472;
 }
+/* Add this CSS to your stylesheets or a style block in your component */
+.MuiInputBase-root.MuiOutlinedInput-root
+  .MuiInputBase-input[type='month']
+  + fieldset
+  legend
+  span::after {
+  color: white !important; /* Change the color to white */
+}

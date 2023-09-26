@@ -33,12 +33,11 @@ router.post('/register', userController.create);
 router.post('/login', userController.login);
 
 router.get('/imgs/:plant_id', getPlantImgs);
-router.post('/uploadImg', addImg); //delete when authentification present
-
 router.get('/profile', authMiddleware, userController.profile);
 router.get('/profile/username', authMiddleware, userController.username);
+router.post('/uploadImg', authMiddleware, userController.addImg);
 
-router.put('/profile/deleteImg', userController.deleteImg);
+router.put('/profile/deleteImg', authMiddleware, userController.deleteImg);
 
 //router.post('/uploadImg', authMiddleware, addImg);
 

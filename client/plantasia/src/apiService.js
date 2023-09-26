@@ -100,26 +100,6 @@ export async function addPlant(plant, accessToken) {
   }
 }
 
-export async function addUploadedImages(uploadedImg) {
-  try {
-    const response = await fetch(`${url}/uploadImg`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        user_ID: uploadedImg.user_ID,
-        plant_ID: uploadedImg.plant_ID,
-        image_url: uploadedImg.image_url,
-      }),
-    });
-    const data = await response.json();
-    return data;
-  } catch (e) {
-    console.error(e);
-  }
-}
-
 export async function getImgUrls(plant_id) {
   try {
     const response = await fetch(`${url}/imgs/${plant_id}`);

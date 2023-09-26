@@ -95,39 +95,31 @@ const profile = async (req, res) => {
 const deleteImg = async (req, res) => {
   try {
     plant_ID = req.body.plant_id;
-    imgToDelete = req.body.image_url;
-    user_ID = req.body.user_id;
+    index = req.body.index;
 
-    //user_ID = req.user.user_id;
+    user_ID = req.user.user_id;
 
-    const imgArr = pool
-      .query(
-        'SELECT image_url FROM uploaded_images WHERE user_ID = $1 AND  plant_ID = $2',
-        [parseInt(user_ID), plant_ID]
-      )
-      .then((data) => {
-        return res.status(200).json(data);
-      })
-      .catch((error) => {
-        console.error('Unable to extract image Arr', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-      });
+    const imgResponse = await pool.query(
+      'SELECT image_url FROM uploaded_images WHERE user_ID = $1 AND  plant_ID = $2',
+      [parseInt(user_ID), plant_ID]
+    );
 
-    console.log(imgArr.rows);
+    const imgArr = JSON.parse(imgResponse.rows[0].image_url);
 
-    //const user_ID = 1;
-    pool
-      .query('SELECT * FROM User_Plants WHERE user_ID = $1', [
-        parseInt(user_ID),
-      ])
-      .then((data) => {
-        return res.status(200).json(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching user plants:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-      });
-  } catch {
+    imgArr.splice(index, 1);
+
+    await pool.query(
+      'UPDATE uploaded_images SET image_url = $1 WHERE user_ID = $2 AND plant_ID = $3',
+      [JSON.stringify(imgArr), parseInt(user_ID), plant_ID]
+    );
+
+    const updatedData = await pool.query(
+      'SELECT image_url FROM uploaded_images WHERE user_ID = $1 AND plant_ID = $2',
+      [parseInt(user_ID), plant_ID]
+    );
+
+    res.json(updatedData.rows);
+  } catch (error) {
     res.status(404).send({ error, message: 'Resource not found' });
   }
 };
@@ -154,6 +146,24 @@ const username = async (req, res) => {
     res.status(404).send({ error, message: 'Resource not found' });
   }
 };
+
+async function addImg(req, res) {
+  user_ID = req.user.user_id;
+
+  const { plant_ID, image_url } = req.body;
+
+  try {
+    // Insert a new plant into User_Plants table
+    db.none(
+      `INSERT INTO uploaded_images (user_ID, plant_ID,  image_url)
+      VALUES ($1, $2, $3)`,
+      [user_ID, plant_ID, image_url]
+    ).then(res.status(200).json({ message: 'Image added successfully' }));
+  } catch (error) {
+    console.error('Error adding img', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 
 async function addUserPlant(req, res) {
   const {
@@ -225,4 +235,5 @@ module.exports = {
   addUserPlant,
   username,
   deleteImg,
+  addImg,
 };

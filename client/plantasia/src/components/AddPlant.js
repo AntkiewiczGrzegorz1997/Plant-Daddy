@@ -6,12 +6,7 @@ import apiServiceJWT from '../ApiServiceJWT';
 import { getPlantInfo } from '../apiService';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'; // Import the calendar icon
 
-import {
-  getAllPlantNames,
-  getPlantDescription,
-  addPlant,
-  addUploadedImages,
-} from '../apiService';
+import { getAllPlantNames, getPlantDescription, addPlant } from '../apiService';
 
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -32,9 +27,7 @@ export default function AddPlant() {
   useEffect(() => {
     // Simulate fetching all names from the database
     const fetchAllNames = async () => {
-      console.log('here1');
       const fetchedNames = await getAllPlantNames();
-      console.log('here2');
       setNames(fetchedNames.map((name) => ({ label: name.full_name }))); // Convert names to the required format
     };
 
@@ -97,7 +90,10 @@ export default function AddPlant() {
     uploadedImg.plant_ID = plant.plant_ID;
     uploadedImg.image_url = JSON.stringify(uploadedCloudinaryImage);
 
-    await addUploadedImages(uploadedImg);
+    await apiServiceJWT.addUploadedImages(
+      localStorage.accessToken,
+      uploadedImg
+    );
     setUploadedCloudinaryImage([]);
     event.target.reset();
     setSelectedImageUrl('');
@@ -152,7 +148,6 @@ export default function AddPlant() {
             {uploadedCloudinaryImage.map(
               (image) => (
                 <div key={image} className='image-container'>
-                  {console.log(image)}
                   <img className='chosenImg' src={image} alt='Uploaded' />
                   <button
                     className='delete-button'
@@ -233,10 +228,17 @@ export default function AddPlant() {
                     color: 'white !important', // Change the calendar icon color to white
                   },
                   '& .MuiIconButton-root svg': {
-                    fill: 'white',
-                    color: 'white',
+                    fill: 'white !important',
+                    color: 'white !important',
                   },
-                  '& svg': { color: 'white' }, // Change the color of the calendar icon
+                  '& svg': { color: 'white' },
+                  '.MuiInputBase-root.MuiOutlinedInput-root .MuiInputBase-input[type="month"] fieldset legend span::after':
+                    {
+                      color: 'white !important' /* Change the color to white */,
+                    },
+                  '& .custom-date-icon': {
+                    fill: 'white !important',
+                  },
                 }}
                 id='date'
                 type='month'
@@ -244,6 +246,9 @@ export default function AddPlant() {
                 name='date'
                 InputLabelProps={{
                   shrink: true,
+                }}
+                inputProps={{
+                  className: 'custom-date-icon',
                 }}
               />
             </div>

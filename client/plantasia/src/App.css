@@ -635,6 +635,7 @@ input {
   background-color: var(--violet);
   display: flex;
   flex-direction: column;
+  padding-bottom: 20vh;
 }
 .homepage-button {
   background-color: var(--violet);
@@ -790,4 +791,11 @@ input {
   justify-content: center;
   align-items: center;
   font-size: 30px;
+}
+.MuiInputBase-root.MuiOutlinedInput-root
+  .MuiInputBase-input[type='month']
+  + fieldset
+  legend
+  span::after {
+  color: white !important; /* Change the color to white */
 }

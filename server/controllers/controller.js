@@ -64,26 +64,11 @@ function getPlantImgs(req, res) {
     });
 }
 
-async function addImg(req, res) {
-  const { user_ID, plant_ID, image_url } = req.body;
-
-  try {
-    // Insert a new plant into User_Plants table
-    db.none(
-      `INSERT INTO uploaded_images (user_ID, plant_ID,  image_url)
-      VALUES ($1, $2, $3)`,
-      [user_ID, plant_ID, image_url]
-    ).then(res.status(200).json({ message: 'Image added successfully' }));
-  } catch (error) {
-    console.error('Error adding img', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-}
 module.exports = {
   getAllPlants,
   //getUserPlants,
   getAllPlantNames,
   getPlantInfo,
-  addImg,
+
   getPlantImgs,
 };
