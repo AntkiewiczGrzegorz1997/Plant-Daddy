@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getUserPlants, getImgUrls } from '../apiService';
+import { getUserPlants, getImgUrls /*deleteImg*/ } from '../apiService';
 import apiServiceJWT from '../ApiServiceJWT';
 import Popup from './Popup'; // Import the Popup component
 
@@ -33,6 +33,9 @@ export default function PlantContainer() {
       setPlantImages([plant.icon_id]);
     }
   };
+  // const handleDeleteImage = async (plant, index) => {
+  //   await deleteImg(plant.plant_id, index);
+  // };
 
   const closePopup = () => {
     setSelectedPlant(null); // Close the popup by resetting selectedPlant to null
@@ -44,8 +47,12 @@ export default function PlantContainer() {
       {/* Display the uploaded image */}
       {plants.length > 0 ? (
         plants.length > 100 ? (
-          plants.map((plant) => (
+          plants.map((plant, index) => (
             <div key={plant.plant_id} className='plant-container-single-small'>
+              {/* <button
+                className='delete-button'
+                onClick={() => handleDeleteImage(plant, index)}
+              ></button> */}
               <img
                 className={'userPlants-small rotateOnHover'}
                 src={plant.icon_id}
@@ -59,7 +66,7 @@ export default function PlantContainer() {
           ))
         ) : (
           //
-          plants.map((plant) => (
+          plants.map((plant, index) => (
             <div key={plant.plant_id} className='plant-container-single-big'>
               <img
                 className={'userPlants-big rotateOnHover'}

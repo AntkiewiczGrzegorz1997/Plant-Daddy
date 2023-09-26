@@ -26,7 +26,6 @@ export default function AddPlant() {
   const speciesAutocompleteRef = useRef();
 
   const handleImageUpload = (imageUrl) => {
-    console.log(imageUrl);
     setUploadedCloudinaryImage([...uploadedCloudinaryImage, ...imageUrl]);
   };
 
@@ -60,9 +59,17 @@ export default function AddPlant() {
   };
 
   async function handleSubmit(event) {
+    const name = event.target.elements.name.value;
+    const date = event.target.elements.date.value;
+    const fullName = event.target.elements.fullName.value;
+    const size = event.target.elements.size.value;
+
+    if (!name || !date || !fullName || !size) {
+      alert('Please fill out all text input fields.');
+      return;
+    }
     event.preventDefault();
 
-    //potential to shorten it with join operation. Do when you have more time
     const plant = {};
 
     plant.full_name = event.target.elements.fullName.value;
@@ -106,7 +113,19 @@ export default function AddPlant() {
     { src: '/cactus.png', alt: 'Cactus' },
     { src: '/monstera.png', alt: 'Monstera' },
     { src: '/plant 1.png', alt: 'Plant 1' },
-    { src: '/plant 9.png', alt: 'Plant 9' },
+    { src: '/trio.png', alt: 'Trio' },
+    { src: '/plant 4.png', alt: 'Plant 4' },
+    { src: '/plant 8.png', alt: 'Plant 8' },
+    { src: '/plant.png', alt: 'Plant' },
+    { src: '/plant 10.png', alt: 'Plant 10' },
+    { src: '/flower (29).png', alt: 'Flower 29' },
+    { src: '/flower (28).png', alt: 'Flower 28' },
+    { src: '/flower (12).png', alt: 'Flower 12' },
+    { src: '/spruce.png', alt: 'spruce' },
+    { src: '/sakura.png', alt: 'sakura' },
+    { src: '/linden.png', alt: 'linden' },
+    { src: '/poplar.png', alt: 'poplar' },
+    { src: '/apple.png', alt: 'apple' },
   ];
 
   const sizes = [

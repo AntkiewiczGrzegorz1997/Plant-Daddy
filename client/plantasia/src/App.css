@@ -16,7 +16,7 @@
   background-color: var(--purple);
   /* height: 10vh; */
   width: 100vw;
-  border-bottom: solid 2px white;
+  border-bottom: solid 1px white;
 }
 
 .PlantContainer {
@@ -30,7 +30,6 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Quattrocento', serif;
 }
 
 .App {
@@ -100,7 +99,7 @@ body {
   width: 20vw;
   height: 30vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  z-index: 1001; /* Ensure it's above the overlay */
+  z-index: 1001;
   position: absolute;
   top: 4vh;
   right: 10px;
@@ -247,12 +246,18 @@ form > button {
   height: 40vh;
   display: flex;
   flex-wrap: wrap;
+  border-radius: 5px;
+  overflow-y: scroll;
+  justify-content: center;
 
-  background-color: var(--purple);
+  background-color: var(--light-green);
   border: 1px solid #ccc;
   padding: 10px;
   z-index: 999; /* Ensure a high z-index to appear above other elements */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.image-popup > div {
+  margin: 0.5vh;
 }
 
 .AddPlantHeader {
@@ -266,7 +271,7 @@ form > button {
 }
 
 .selected-image > img {
-  margin-top: 4vh;
+  margin-top: 2vh;
   margin-left: 4vw;
 }
 input {
@@ -343,7 +348,7 @@ input {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -357,7 +362,25 @@ input {
   height: 80vh;
 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  z-index: 1001; /* Ensure it's above the overlay */
+  z-index: 1001;
+}
+
+.first-img-big {
+  border: solid 1px white;
+  padding: 1vh;
+}
+
+.popup-content > p {
+  font-size: 30px;
+  margin-block-start: 0;
+  font-family: Quattrocento, serif;
+}
+.popup-details > p {
+  font-family: 'Fanwood Text', serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5em;
+  margin-block-start: 0;
 }
 
 .close-button {
@@ -390,13 +413,30 @@ input {
   height: 30vh;
   width: auto;
 }
+
 .later-img-smaller-container {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
-  background-color: var(--purple);
   padding: 2vh;
-  margin-left: 2vh;
+  border: solid 1px white;
+  width: 80vw;
+  height: 25.5vh;
+  border-radius: 5px;
+}
+
+.later-img-smaller-container0 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+
+  padding: 2vh;
+  border: solid 1px white;
+  width: 80vw;
+  height: 25.5vh;
+  border-radius: 5px;
 }
 
 .later-img-smaller {
@@ -420,14 +460,29 @@ input {
 }
 
 .popup-details img {
-  height: 35vh;
-  width: 20vw;
+  height: 29.5vh;
+  width: auto;
 }
 .plant-description {
-  height: 35vh;
+  height: 25vh;
   width: 70vw;
   text-align: left;
   margin-left: 2vw;
+  border-radius: 5px;
+  margin-top: 0;
+  text-align: justify;
+  overflow-y: scroll;
+
+  border: solid 1px white;
+  padding: 2vh;
+}
+.plant-description > p {
+  font-family: 'Fanwood Text', serif;
+  font-weight: 400;
+  line-height: 1.755em;
+  letter-spacing: 0em;
+
+  font-size: 20px;
 }
 
 .widgetUpload {
@@ -734,4 +789,5 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 30px;
 }

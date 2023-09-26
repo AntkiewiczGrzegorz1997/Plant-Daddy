@@ -12,27 +12,15 @@ const Popup = ({ plant, onClose, plantImages }) => {
           <p>{plant.plant_name}</p>
           <div className='stored-imgs-container'>
             {plantImages.length === 0 ? (
-              <p>No images available</p>
+              <div className='later-img-smaller-container0'>
+                <p>No images available...</p>
+              </div>
             ) : (
               <>
-                <div>
-                  {plantImages.map(
-                    (img, index) =>
-                      index <= 0 && (
-                        <img
-                          className='first-img-bigger'
-                          src={img}
-                          alt={img}
-                          key={img}
-                        />
-                      )
-                  )}
-                </div>
-
                 <div className='later-img-smaller-container'>
                   {plantImages.map(
                     (img, index) =>
-                      index > 0 && (
+                      index >= 0 && (
                         <img
                           className='later-img-smaller'
                           src={img}

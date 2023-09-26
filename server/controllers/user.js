@@ -92,6 +92,46 @@ const profile = async (req, res) => {
   }
 };
 
+const deleteImg = async (req, res) => {
+  try {
+    plant_ID = req.body.plant_id;
+    imgToDelete = req.body.image_url;
+    user_ID = req.body.user_id;
+
+    //user_ID = req.user.user_id;
+
+    const imgArr = pool
+      .query(
+        'SELECT image_url FROM uploaded_images WHERE user_ID = $1 AND  plant_ID = $2',
+        [parseInt(user_ID), plant_ID]
+      )
+      .then((data) => {
+        return res.status(200).json(data);
+      })
+      .catch((error) => {
+        console.error('Unable to extract image Arr', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      });
+
+    console.log(imgArr.rows);
+
+    //const user_ID = 1;
+    pool
+      .query('SELECT * FROM User_Plants WHERE user_ID = $1', [
+        parseInt(user_ID),
+      ])
+      .then((data) => {
+        return res.status(200).json(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching user plants:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      });
+  } catch {
+    res.status(404).send({ error, message: 'Resource not found' });
+  }
+};
+
 const username = async (req, res) => {
   try {
     // const { user_id, firstName, lastName } = req.user;
@@ -177,4 +217,12 @@ const logout = (req, res) => {
   // REMOVE-END
 };
 
-module.exports = { create, login, profile, logout, addUserPlant, username };
+module.exports = {
+  create,
+  login,
+  profile,
+  logout,
+  addUserPlant,
+  username,
+  deleteImg,
+};
