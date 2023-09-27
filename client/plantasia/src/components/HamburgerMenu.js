@@ -11,7 +11,7 @@ export default function HamburgerMenu({ menuOpen, onClose, pageName }) {
       <nav className='navbar'>
         {pageName === 'profile' && (
           <Link to='/profile/addnewplant' className='navbar-button'>
-            Add Plant
+            Add a Plant
           </Link>
         )}
         {pageName === 'addnewplant' && (

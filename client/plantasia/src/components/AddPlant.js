@@ -238,6 +238,7 @@ export default function AddPlant() {
                     },
                   '& .custom-date-icon': {
                     fill: 'white !important',
+                    color: 'white',
                   },
                 }}
                 id='date'

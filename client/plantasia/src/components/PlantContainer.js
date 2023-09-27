@@ -76,8 +76,8 @@ export default function PlantContainer() {
           //
         )
       ) : (
-        <div>
-          <h1>There are no plants available yet </h1>
+        <div className='justText'>
+          <p>There are no plants available yet...</p>
         </div>
       )}
 

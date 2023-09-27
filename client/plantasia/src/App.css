@@ -286,7 +286,7 @@ input {
 }
 .image-scroll {
   display: flex;
-  width: 50vw;
+  width: 42vw;
   height: 100%;
   overflow-x: scroll;
   margin-top: -1vh;
@@ -798,4 +798,14 @@ input {
   legend
   span::after {
   color: white !important; /* Change the color to white */
+}
+
+.justText {
+  text-align: center;
+  font-size: 30px;
+  margin-left: 35vw;
+  margin-top: 30vh;
+}
+.plant-container-single-big {
+  margin: 0.5vh 0.5vw;
 }
