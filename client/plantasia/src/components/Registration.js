@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { styles } from '../data/styles';
 
 import auth from '../utils/auth';
 import apiServiceJWT from './../ApiServiceJWT';
@@ -53,7 +54,6 @@ export default function Registration(props) {
       props.setIsAuthenticated(true);
       auth.login(() => navigate('/profile'));
     }
-    // REMOVE-END
   };
   const validateForm = () => {
     return (
@@ -81,28 +81,7 @@ export default function Registration(props) {
         </div>
         <form className={'form-signup'} onSubmit={handleSubmit}>
           <TextField
-            sx={{
-              width: '25vw',
-              borderRadius: '4px',
-              backgroundColor: 'transparent',
-              color: 'white',
-              '& input': {
-                color: 'white',
-              },
-
-              '& .MuiInputBase-input': {
-                color: 'white', // Set text color to white
-              },
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#FFFFFF !important', // Set border color to white with !important
-              },
-              '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: '#FFFFFF !important', // Set border color to white with !important on hover
-                },
-              marginBottom: '4vh',
-              marginTop: '-16vh',
-            }}
+            sx={styles.style4}
             type='text'
             placeholder='name@mail.com'
             name='email'
@@ -110,26 +89,7 @@ export default function Registration(props) {
             onChange={handleChange}
           />
           <TextField
-            sx={{
-              width: '25vw',
-              borderRadius: '4px',
-              backgroundColor: 'transparent',
-              color: '#776472',
-              '& input': {
-                color: 'white',
-              },
-              '& .MuiInputBase-input': {
-                color: 'white', // Set text color to white
-              },
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#FFFFFF !important', // Set border color to white with !important
-              },
-              '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: '#FFFFFF !important', // Set border color to white with !important on hover
-                },
-              marginBottom: '4vh',
-            }}
+            sx={styles.style5}
             type='password'
             placeholder='password'
             name='password'
@@ -137,26 +97,7 @@ export default function Registration(props) {
             onChange={handleChange}
           />
           <TextField
-            sx={{
-              width: '25vw',
-              borderRadius: '4px',
-              backgroundColor: 'transparent',
-              color: '#776472',
-              '& input': {
-                color: 'white',
-              },
-              '& .MuiInputBase-input': {
-                color: 'white', // Set text color to white
-              },
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#FFFFFF !important', // Set border color to white with !important
-              },
-              '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: '#FFFFFF !important', // Set border color to white with !important on hover
-                },
-              marginBottom: '4vh',
-            }}
+            sx={styles.style5}
             type='text'
             placeholder='Name'
             name='firstName'
@@ -164,27 +105,7 @@ export default function Registration(props) {
             onChange={handleChange}
           />
           <TextField
-            sx={{
-              width: '25vw',
-              borderRadius: '4px',
-              backgroundColor: 'transparent',
-              color: '#776472',
-              '& input': {
-                color: 'white',
-              },
-              '& .MuiInputBase-input': {
-                color: 'white', // Set text color to white
-              },
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#FFFFFF !important', // Set border color to white with !important
-              },
-              '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: '#FFFFFF !important', // Set border color to white with !important on hover
-                },
-
-              marginBottom: '4vh',
-            }}
+            sx={styles.style5}
             type='text'
             placeholder='Surname'
             name='lastName'
@@ -193,27 +114,7 @@ export default function Registration(props) {
           />
 
           <TextField
-            sx={{
-              width: '25vw',
-              borderRadius: '4px',
-              backgroundColor: 'transparent',
-              color: '#776472',
-              '& input': {
-                color: 'white',
-              },
-              '& .MuiInputBase-input': {
-                color: 'white', // Set text color to white
-              },
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#FFFFFF !important', // Set border color to white with !important
-              },
-              '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: '#FFFFFF !important', // Set border color to white with !important on hover
-                },
-
-              marginBottom: '4vh',
-            }}
+            sx={styles.style5}
             type='text'
             placeholder='username'
             name='username'
@@ -225,16 +126,7 @@ export default function Registration(props) {
             className='form-submit'
             type='submit'
             disabled={validateForm()}
-            sx={{
-              backgroundColor: '#445552',
-              width: '25vw',
-              color: '#FFFFFF',
-              height: '7vh',
-              '&:hover': {
-                backgroundColor: '#294d4a', // Change to the desired background color
-              },
-              marginBottom: '4vh',
-            }}
+            sx={styles.style6}
           >
             Sign up
           </Button>

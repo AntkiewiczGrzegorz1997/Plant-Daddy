@@ -1,15 +1,11 @@
-// Popup.js
 import React, { useEffect, useState } from 'react';
 import apiServiceJWT from '../ApiServiceJWT';
 
 const Popup = ({ plant, onClose, plantImages }) => {
-  console.log(plantImages);
   const [images, setImages] = useState([]);
   useEffect(() => {
-    // Simulate fetching all names from the database
     setImages(plantImages);
   }, [plantImages]);
-  console.log(images);
 
   const handleDeleteImage = async (plant, index) => {
     const data = await apiServiceJWT.deleteImg(
@@ -29,7 +25,6 @@ const Popup = ({ plant, onClose, plantImages }) => {
         <div className='popup-content'>
           <p>{plant.plant_name}</p>
           <div className='stored-imgs-container'>
-            {console.log(images)}
             {images.length === 0 ? (
               <div className='later-img-smaller-container0'>
                 <p>No images available...</p>
@@ -68,7 +63,6 @@ const Popup = ({ plant, onClose, plantImages }) => {
             <p>{`Sunlight: ${JSON.parse(plant.sunlight).join(', ')}`}</p>
           </div>
 
-          {/*<img className='popup-image' src={plant.icon_id} alt='Large Plant' />*/}
           <div className='popup-details'>
             <img src={plant.image_url} alt={plant.image_url} />
 

@@ -4,8 +4,7 @@ import apiServiceJWT from '../ApiServiceJWT';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [username, setUsername] = useState(''); // Store the images for the opened plant
-
+  const [username, setUsername] = useState('');
   useEffect(() => {
     const fetchUsername = async () => {
       const fetchedUsername = await apiServiceJWT.username(
@@ -41,5 +40,3 @@ export default function Header() {
     </div>
   );
 }
-
-//{menuOpen && <HamburgerMenu menuOpen={menuOpen} />}

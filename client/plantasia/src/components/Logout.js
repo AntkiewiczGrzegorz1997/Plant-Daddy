@@ -22,7 +22,6 @@ const Logout = (props) => {
   };
 
   const handleNoClick = () => {
-    // Go back to the previous page using the browser's history
     window.history.back();
   };
 

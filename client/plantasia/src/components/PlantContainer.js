@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getUserPlants, getImgUrls } from '../apiService';
 import apiServiceJWT from '../ApiServiceJWT';
-import Popup from './Popup'; // Import the Popup component
+import Popup from './Popup';
 
 export default function PlantContainer() {
-  const [plants, setPlants] = useState([]); // Use state to store the names
-  const [selectedPlant, setSelectedPlant] = useState(null); // Track the selected plant for the popup
-  const [plantImages, setPlantImages] = useState([]); // Store the images for the opened plant
+  const [plants, setPlants] = useState([]);
+  const [selectedPlant, setSelectedPlant] = useState(null);
+  const [plantImages, setPlantImages] = useState([]);
 
   useEffect(() => {
     const fetchAllPlants = async () => {
@@ -15,15 +15,13 @@ export default function PlantContainer() {
       );
 
       setPlants(fetchedplants.rows);
-
-      // Convert names to the required format
     };
 
     fetchAllPlants();
   }, []);
 
   const openPopup = async (plant) => {
-    setSelectedPlant(plant); // Set the selected plant when the image is clicked
+    setSelectedPlant(plant);
 
     const imgObj = await getImgUrls(plant.plant_id);
 
@@ -35,13 +33,12 @@ export default function PlantContainer() {
   };
 
   const closePopup = () => {
-    setSelectedPlant(null); // Close the popup by resetting selectedPlant to null
-    setPlantImages([]); // Clear the images when closing the popup
+    setSelectedPlant(null);
+    setPlantImages([]);
   };
 
   return (
     <div className='plant-wrapper'>
-      {/* Display the uploaded image */}
       {plants.length > 0 ? (
         plants.length > 100 ? (
           plants.map((plant, index) => (

@@ -8,7 +8,6 @@ import Logout from './components/Logout';
 
 import PlantContainer from './components/PlantContainer';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import auth from './utils/auth';
 import Registration from './components/Registration';
 import Login from './components/Login';
 
@@ -19,11 +18,9 @@ function App() {
     initialIsAuthenticated
   );
 
-  // Update localStorage when isAuthenticated state changes
   useEffect(() => {
     localStorage.setItem('isAuthenticated', isAuthenticated.toString());
-  }, [isAuthenticated]); // Add this line for debugging
-
+  }, [isAuthenticated]);
   return (
     <Routes>
       <Route
@@ -65,7 +62,6 @@ function App() {
         path='/logout'
         element={<Logout setIsAuthenticated={setIsAuthenticated} />}
       />
-      {/* <Route path='/description' element={<Description />} /> */}
     </Routes>
   );
 }

@@ -4,7 +4,8 @@ import Button from '@mui/material/Button';
 import UploadWidgetContainer from './UploadWidgetContainer';
 import apiServiceJWT from '../ApiServiceJWT';
 import { getPlantInfo } from '../apiService';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday'; // Import the calendar icon
+import { objects } from '../data/objects';
+import { styles } from '../data/styles';
 
 import { getAllPlantNames, getPlantDescription, addPlant } from '../apiService';
 
@@ -15,7 +16,7 @@ export default function AddPlant() {
   const [isImagePopupOpen, setImagePopupOpen] = useState(false);
   const [selectedImageUrl, setSelectedImageUrl] = useState([]);
 
-  const [names, setNames] = useState([]); // Use state to store the names
+  const [names, setNames] = useState([]);
   const [uploadedCloudinaryImage, setUploadedCloudinaryImage] = useState([]);
   const sizeAutocompleteRef = useRef();
   const speciesAutocompleteRef = useRef();
@@ -25,7 +26,6 @@ export default function AddPlant() {
   };
 
   useEffect(() => {
-    // Simulate fetching all names from the database
     const fetchAllNames = async () => {
       const fetchedNames = await getAllPlantNames();
       setNames(fetchedNames.map((name) => ({ label: name.full_name }))); // Convert names to the required format
@@ -35,7 +35,7 @@ export default function AddPlant() {
   }, []);
 
   const openImagePopup = (e) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault();
     setImagePopupOpen(true);
   };
 
@@ -48,7 +48,7 @@ export default function AddPlant() {
 
   const selectImage = (imageUrl) => {
     setSelectedImageUrl(imageUrl);
-    setImagePopupOpen(false); // Close the popup after selecting an image
+    setImagePopupOpen(false);
   };
 
   async function handleSubmit(event) {
@@ -105,32 +105,9 @@ export default function AddPlant() {
       .click();
   }
 
-  const iconImages = [
-    { src: '/cactus.png', alt: 'Cactus' },
-    { src: '/monstera.png', alt: 'Monstera' },
-    { src: '/plant 1.png', alt: 'Plant 1' },
-    { src: '/trio.png', alt: 'Trio' },
-    { src: '/plant 4.png', alt: 'Plant 4' },
-    { src: '/plant 8.png', alt: 'Plant 8' },
-    { src: '/plant.png', alt: 'Plant' },
-    { src: '/plant 10.png', alt: 'Plant 10' },
-    { src: '/flower (29).png', alt: 'Flower 29' },
-    { src: '/flower (28).png', alt: 'Flower 28' },
-    { src: '/flower (12).png', alt: 'Flower 12' },
-    { src: '/spruce.png', alt: 'spruce' },
-    { src: '/sakura.png', alt: 'sakura' },
-    { src: '/linden.png', alt: 'linden' },
-    { src: '/poplar.png', alt: 'poplar' },
-    { src: '/apple.png', alt: 'apple' },
-  ];
+  const iconImages = objects.iconImages;
 
-  const sizes = [
-    { label: 'tiny' },
-    { label: 'small' },
-    { label: 'medium' },
-    { label: 'medium large' },
-    { label: 'XXL' },
-  ];
+  const sizes = objects.sizes;
 
   return (
     <div className='AddPlant'>
@@ -168,35 +145,7 @@ export default function AddPlant() {
             <div>
               {/* ... other form fields */}
               <TextField
-                sx={{
-                  width: '100%',
-                  borderRadius: '4px',
-                  backgroundColor: '#776472',
-                  '& input': {
-                    color: 'white',
-                  },
-                  '& .MuiInputBase-input': {
-                    color: 'white',
-                  },
-                  '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#FFFFFF !important',
-                  },
-                  '& .MuiInputLabel-root': {
-                    color: 'white',
-                  },
-                  '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
-                    {
-                      borderColor: '#FFFFFF !important',
-                    },
-                  '& .MuiIconButton-root': {
-                    color: 'white !important', // Change the calendar icon color to white
-                  },
-                  '& .MuiIconButton-root svg': {
-                    fill: 'white',
-                    color: 'white',
-                  },
-                  '& svg': { color: 'white' },
-                }}
+                sx={styles.style1}
                 className='test'
                 label='Name'
                 name='name'
@@ -204,43 +153,7 @@ export default function AddPlant() {
             </div>
             <div>
               <TextField
-                sx={{
-                  width: '100%',
-                  borderRadius: '4px',
-                  backgroundColor: '#776472',
-                  '& input': {
-                    color: 'white',
-                  },
-                  '& .MuiInputBase-input': {
-                    color: 'white',
-                  },
-                  '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#FFFFFF !important',
-                  },
-                  '& .MuiInputLabel-root': {
-                    color: 'white',
-                  },
-                  '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
-                    {
-                      borderColor: '#FFFFFF !important',
-                    },
-                  '& .MuiIconButton-root': {
-                    color: 'white !important', // Change the calendar icon color to white
-                  },
-                  '& .MuiIconButton-root svg': {
-                    fill: 'white !important',
-                    color: 'white !important',
-                  },
-                  '& svg': { color: 'white' },
-                  '.MuiInputBase-root.MuiOutlinedInput-root .MuiInputBase-input[type="month"] fieldset legend span::after':
-                    {
-                      color: 'white !important' /* Change the color to white */,
-                    },
-                  '& .custom-date-icon': {
-                    fill: 'white !important',
-                    color: 'white',
-                  },
-                }}
+                sx={styles.style1}
                 id='date'
                 type='month'
                 label='Since When'
@@ -303,27 +216,7 @@ export default function AddPlant() {
                 }}
                 renderInput={(params) => (
                   <TextField
-                    sx={{
-                      width: '100%',
-                      borderRadius: '4px',
-                      backgroundColor: '#776472',
-                      '& input': {
-                        color: 'white',
-                      },
-                      '& .MuiInputBase-input': {
-                        color: 'white',
-                      },
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderColor: '#FFFFFF !important',
-                      },
-                      '& .MuiInputLabel-root': {
-                        color: 'white',
-                      },
-                      '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
-                        {
-                          borderColor: '#FFFFFF !important',
-                        },
-                    }}
+                    sx={styles.style1}
                     className='test'
                     {...params}
                     label='Species'
@@ -354,27 +247,7 @@ export default function AddPlant() {
                 key='10'
                 renderInput={(params) => (
                   <TextField
-                    sx={{
-                      width: '100%',
-                      borderRadius: '4px',
-                      backgroundColor: '#776472',
-                      '& input': {
-                        color: 'white',
-                      },
-                      '& .MuiInputBase-input': {
-                        color: 'white',
-                      },
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderColor: '#FFFFFF !important',
-                      },
-                      '& .MuiInputLabel-root': {
-                        color: 'white',
-                      },
-                      '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
-                        {
-                          borderColor: '#FFFFFF !important',
-                        },
-                    }}
+                    sx={styles.style1}
                     className='test'
                     {...params}
                     label='Size'

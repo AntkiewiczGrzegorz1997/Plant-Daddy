@@ -16,17 +16,6 @@ export async function getAllPlantNames() {
   }
 }
 
-// export async function getUserPlants(user_id) {
-//   try {
-//     const response = await fetch(`${url}/profile/${user_id}`);
-//     const data = await response.json();
-
-//     return data;
-//   } catch (e) {
-//     console.error(e);
-//   }
-// }
-
 export async function getUserPlants(accessToken) {
   try {
     const response = await fetch(`${url}/profile`, {
@@ -36,7 +25,7 @@ export async function getUserPlants(accessToken) {
       },
     });
     const data = await response.json();
-    console.log(data);
+
     return data;
   } catch (e) {
     console.error(e);

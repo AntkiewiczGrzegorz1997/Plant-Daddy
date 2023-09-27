@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { apis } from '../api-access.js';
 const uploadPreset = apis.cloudinary.uploadPreset;
@@ -18,30 +18,26 @@ export default function UploadWidgetContainer({ onImageUpload }) {
         cloudName: 'dnzhttyev',
         uploadPreset: uploadPreset,
         apiKey: apiKey,
-        folder: 'plants', // Add your Cloudinary API key here
-        multiple: true, // Enable multiple file selection
+        folder: 'plants',
+        multiple: true,
       },
       function (error, result) {
         if (!error && result && result.event === 'success') {
-          // Handle the successful upload here
           const imageUrl = result.info.secure_url;
 
-          // Set the URL in the hidden input field
           document.getElementById('uploadedImageUrl').value = imageUrl;
 
           imageArr.push(imageUrl);
 
           onImageUpload(imageArr);
-
-          // You can log the URL if needed
         }
       }
     );
   }, [onImageUpload]);
 
   const handleUploadClick = (e) => {
-    e.preventDefault(); // Prevent form submission
-    widgetRef.current.open(); // Open the Cloudinary Upload Widget
+    e.preventDefault();
+    widgetRef.current.open();
   };
 
   return (

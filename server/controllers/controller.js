@@ -5,7 +5,6 @@ const { db, pgp } = require('../models/db');
 function getAllPlants(req, res) {
   db.any('SELECT * FROM public.plants')
     .then((data) => {
-      console.log(data);
       res.status(200).json(data);
     })
     .catch((error) => {

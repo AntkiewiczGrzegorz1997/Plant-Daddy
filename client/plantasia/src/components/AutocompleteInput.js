@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { getAllPlantNames } from '../apiService';
 export default function AutocompleteInput() {
   const [inputValue, setInputValue] = useState('');
-  const [allNames, setAllNames] = useState([]); // Store all names from the database
-  const [filteredNames, setFilteredNames] = useState([]); // Store filtered names based on input
+  const [allNames, setAllNames] = useState([]);
+  const [filteredNames, setFilteredNames] = useState([]);
 
-  // Simulate fetching all names from the database
   const fetchAllNames = async () => {
     const namesArr = [];
     const names = await getAllPlantNames();
@@ -21,11 +20,9 @@ export default function AutocompleteInput() {
   }, []);
 
   useEffect(() => {
-    // Filter names based on user input
     const filtered = allNames.filter((name) =>
       name.toLowerCase().includes(inputValue.toLowerCase())
     );
-    console.log(filtered);
     setFilteredNames(filtered);
   }, [inputValue, allNames]);
 

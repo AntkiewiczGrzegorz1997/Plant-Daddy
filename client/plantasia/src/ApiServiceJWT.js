@@ -3,7 +3,6 @@ const BASE_URL = 'http://localhost:3000';
 const apiServiceJWT = {};
 
 apiServiceJWT.register = (user) => {
-  console.log('check');
   return fetch(`${BASE_URL}/register`, {
     method: 'POST',
     credentials: 'include',
@@ -62,7 +61,6 @@ apiServiceJWT.username = (accessToken) => {
     .catch((err) => console.log(err));
 };
 apiServiceJWT.deleteImg = (accessToken, plant_id, index) => {
-  console.log(accessToken);
   return fetch(`${BASE_URL}/profile/deleteImg`, {
     method: 'PUT',
     credentials: 'include',
@@ -77,7 +75,6 @@ apiServiceJWT.deleteImg = (accessToken, plant_id, index) => {
     }),
   })
     .then(async (res) => {
-      console.log(res);
       const data = await res.json();
 
       return data;
@@ -107,22 +104,7 @@ apiServiceJWT.addUploadedImages = async (accessToken, uploadedImg) => {
 };
 
 apiServiceJWT.logout = (tokenName) => {
-  // REMOVE-START
-  // delete token from local storage here
   localStorage.removeItem(tokenName);
-  // the following request should invalidate the token
-  // return fetch(`${BASE_URL}/logout`, {
-  //   method: 'POST',
-  //   credentials: 'include',
-  //   mode: 'cors',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     Authorization: `Bearer ${tokenName}`,
-  //   },
-  // })
-  //   .then((res) => res.json())
-  //   .catch((err) => console.log(err));
-  // REMOVE-END
 };
 
 export default apiServiceJWT;

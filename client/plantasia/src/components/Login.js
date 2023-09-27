@@ -4,6 +4,7 @@ import apiServiceJWT from './../ApiServiceJWT';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import video from '../video.mp4';
+import { styles } from '../data/styles';
 
 import TextField from '@mui/material/TextField';
 
@@ -74,28 +75,7 @@ export default function Login(props) {
         </div>
         <form className='form-login' onSubmit={handleSubmit}>
           <TextField
-            sx={{
-              width: '25vw',
-              borderRadius: '4px',
-
-              borderLeftColor: '#FFFFFF',
-              backgroundColor: 'transparent',
-              color: 'white',
-              '& input': {
-                color: 'white',
-                backgroundColor: 'transparent',
-              },
-              '& .MuiInputBase-input': {
-                color: 'white', // Set text color to white
-              },
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#FFFFFF !important', // Set border color to white with !important
-              },
-              '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: '#FFFFFF !important', // Set border color to white with !important on hover
-                },
-            }}
+            sx={styles.style1}
             type='text'
             placeholder='name@mail.com'
             name='email'
@@ -104,27 +84,7 @@ export default function Login(props) {
           />
 
           <TextField
-            sx={{
-              borderRadius: '4px',
-              backgroundColor: 'transparent',
-              color: '#776472',
-              width: '25vw',
-              marginTop: '5vh',
-              marginBottom: '5vh',
-              '& input': {
-                color: 'white',
-              },
-              '& .MuiInputBase-input': {
-                color: 'white', // Set text color to white
-              },
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#FFFFFF !important', // Set border color to white with !important
-              },
-              '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: '#FFFFFF !important', // Set border color to white with !important on hover
-                },
-            }}
+            sx={styles.style2}
             type='password'
             placeholder='supersecretthingy'
             name='password'
@@ -136,15 +96,7 @@ export default function Login(props) {
             className={'form-submit login'}
             type='submit'
             disabled={validateForm()}
-            sx={{
-              backgroundColor: '#445552',
-              width: '25vw',
-              color: '#FFFFFF',
-              height: '7vh',
-              '&:hover': {
-                backgroundColor: '#294d4a', // Change to the desired background color
-              },
-            }}
+            sx={styles.style3}
             name='icon'
           >
             Log in

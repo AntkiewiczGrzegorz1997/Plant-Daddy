@@ -20,8 +20,6 @@ fs.readFile(filePath, 'utf8', async (err, data) => {
     // Parse the JSON data
     const jsonData = JSON.parse(data);
 
-    console.log(jsonData);
-
     // Iterate through the data and insert it into the database
     for (const item of jsonData.data) {
       const imageUrl =
