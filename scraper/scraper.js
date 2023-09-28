@@ -1,8 +1,11 @@
 const axios = require('axios');
 const fs = require('fs');
 
-const apiUrl = 'https://perenual.com/api/species-list';
-const apiKey = 'sk-h1y9650afd30ac0db2194'; // Replace with your actual API key
+import { apis } from '../client/plantasia/src/api-access';
+
+const apiUrl = apis.perenual.apiUrl;
+const apiKey = apis.perenual.apiKey;
+
 const perPage = 30; // Number of items per page
 let currentPage = 101;
 let data = [];

@@ -1,4 +1,3 @@
-// Imports
 'use strict';
 const router = require('./router.js');
 const express = require('express');
@@ -15,7 +14,6 @@ const corsConfig = {
 };
 
 app.use(cors(corsConfig));
-//app.use(cors());
 app.use(express.json());
 
 app.use(router);
@@ -23,8 +21,6 @@ app.use(router);
 app.get('*', (req, res) => {
   res.status(404).send('Sorry, not found 😞');
 });
-
-//Launch with IFFY
 
 (async function bootstrap() {
   try {

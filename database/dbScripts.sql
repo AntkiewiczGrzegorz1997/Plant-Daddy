@@ -15,7 +15,8 @@ CREATE TABLE Users (
   email varchar(80),
   password varchar(200),
   firstName varchar(80),
-  lastName varchar(80)
+  lastName varchar(80),
+  username var(200)
 );
 
 /*  FOREIGN KEY (user_ID) REFERENCES User_Plants(user_ID)*/
@@ -35,13 +36,10 @@ CREATE TABLE User_Plants (
   sunlight varchar(200),
   icon_ID varchar(200),
   PRIMARY KEY (user_ID, plant_ID),
+  image_url varchar(1000),
  
 );
 
-/*   FOREIGN KEY (user_ID) REFERENCES Users(user_ID),
-  FOREIGN KEY (user_ID, plant_ID) REFERENCES Uploaded_Images(user_ID, plant_ID),
-  FOREIGN KEY (ID) REFERENCES Plants(ID)
-  */
 
 
 CREATE TABLE Plants (
@@ -54,14 +52,11 @@ CREATE TABLE Plants (
   watering varchar(20)
 );
 
-/*   FOREIGN KEY (ID) REFERENCES User_Plants(ID)
-  */
 
 
 CREATE TABLE Uploaded_Images (
   user_ID bigint,
   plant_ID bigint,
-  image_ID bigint,
   image_url varchar(500),
   PRIMARY KEY (user_ID, plant_ID, image_ID),
   
@@ -69,13 +64,10 @@ CREATE TABLE Uploaded_Images (
   
 );
 
-/*
-FOREIGN KEY (user_ID, plant_ID) REFERENCES User_Plants(user_ID, plant_ID)
- */ 
 
 
  
 
 
-/*create tables*/
+
 

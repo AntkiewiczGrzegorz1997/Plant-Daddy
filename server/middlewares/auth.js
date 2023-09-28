@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const { db, pgp } = require('../models/db');
+const { db } = require('../models/db');
 
 const SECRET_KEY = process.env.SECRET_KEY || 'lalala this isnt secure';
 
@@ -31,8 +31,6 @@ const authMiddleware = async (req, res, next) => {
   } catch (e) {
     res.sendStatus(401); // Token verification failed
   }
-
-  // REMOVE-END
 };
 
 module.exports = authMiddleware;

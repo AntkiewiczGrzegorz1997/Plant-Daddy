@@ -31,6 +31,10 @@ To get started with Plant Daddy, follow these simple steps:
 5. Run the scraper with `node scraper.js`.
 6. After successfully scraping data, use `upload_to_DB.js` to upload the data to your database.
 
+### Database
+
+Database snapshot resides under 'database/dump-plantasia-202309271452.sql'
+
 ## Tech Stack
 
 Plant Daddy is built using the following technologies:

@@ -71,11 +71,8 @@ const login = async (req, res) => {
 
 const profile = async (req, res) => {
   try {
-    // const { user_id, firstName, lastName } = req.user;
-    // const user = { user_id, firstName, lastName };
     user_ID = req.user.user_id;
 
-    //const user_ID = 1;
     pool
       .query('SELECT * FROM User_Plants WHERE user_ID = $1', [
         parseInt(user_ID),
@@ -126,11 +123,8 @@ const deleteImg = async (req, res) => {
 
 const username = async (req, res) => {
   try {
-    // const { user_id, firstName, lastName } = req.user;
-    // const user = { user_id, firstName, lastName };
     user_ID = req.user.user_id;
 
-    //const user_ID = 1;
     pool
       .query('SELECT username FROM users WHERE user_ID = $1', [
         parseInt(user_ID),
@@ -153,7 +147,6 @@ async function addImg(req, res) {
   const { plant_ID, image_url } = req.body;
 
   try {
-    // Insert a new plant into User_Plants table
     db.none(
       `INSERT INTO uploaded_images (user_ID, plant_ID,  image_url)
       VALUES ($1, $2, $3)`,
@@ -220,12 +213,7 @@ async function addUserPlant(req, res) {
   }
 }
 
-const logout = (req, res) => {
-  // REMOVE-START
-  // delete the token client side upon logout.
-  // you would invalidate the token here.
-  // REMOVE-END
-};
+const logout = (req, res) => {};
 
 module.exports = {
   create,
