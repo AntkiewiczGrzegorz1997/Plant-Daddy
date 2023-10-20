@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+}
+
+html {
+  background-color: #776472;
+}
+.MuiInputBase-root.MuiOutlinedInput-root
+  .MuiInputBase-input[type='month']
+  + fieldset
+  legend
+  span::after {
+  color: white !important;
+}
