@@ -10,34 +10,55 @@ But that's not all! Our thriving community of plant enthusiasts is here to celeb
 
 To get started with Plant Daddy, follow these simple steps:
 
+#### Clone the repository
+
+```bash
+git clone [repository_link]
+```
+
 ### Client
 
-1. Navigate to the `client` folder in your terminal.
-2. Install all the required packages using `npm install`.
-3. Start the client application with `npm start`.
+```bash
+#Open the project folder
+#Navigate to the `client` folder in your terminal.
+cd client
+#Install all the required packages
+npm install
+```
+
+Make sure in the `client/api-services/`folder you include a file `api-access.js` with your api keys for listed APIs as shown in the screenshot below:
+
+```bash
+#Start the client application:
+npm start
+```
 
 ### Server
 
-1. Navigate to the `server` folder in your terminal.
-2. Install all the required libraries using `npm install`.
-3. Run the server using `nodemon index.js`.
+```bash
 
-### Scraper
-
-1. Ensure you have your custom API access keys.
-2. Navigate to the `scraper` folder in your terminal.
-3. Install all required libraries with `npm install`.
-4. Before running the scraper, update the output file name in the script.
-5. Run the scraper with `node scraper.js`.
-6. After successfully scraping data, use `upload_to_DB.js` to upload the data to your database.
+#Navigate to the `server` folder in your terminal:
+cd server
+#Install all the required libraries:
+npm install
+#Run the server by running:
+nodemon index.js`
+```
 
 ### Database
 
-Database snapshot resides under 'database/dump-plantasia-202309271452.sql'
+```bash
+#run:
+psql -U username -d plantasia < dump-plantasia-202309271452.sql
+# with dump-plantasia-202309271452.sql from:
+```
+
+`database/dump-plantasia-202309271452.sql`
+to create your own DB.
 
 ## Tech Stack
 
-Plant Daddy is built using the following technologies:
+![Tech Stack](https://skillicons.dev/icons?i=js,react,postgres,express,postgres,nodejs,css,docker,materialui)
 
 ### Back End
 
@@ -48,6 +69,7 @@ Plant Daddy is built using the following technologies:
 
 - **Material UI**: A popular React UI framework that provides a set of customizable components.
 - **React**: A JavaScript library for building user interfaces.
+- **Cloudinary**: Cloudinary is a cloud-based media management platform.
 
 ### APIs
 
