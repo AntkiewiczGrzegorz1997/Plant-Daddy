@@ -58,7 +58,7 @@ to create your own DB.
 
 ## Tech Stack
 
-![Tech Stack](https://skillicons.dev/icons?i=js,react,postgres,express,postgres,nodejs,css,docker,materialui)
+![Tech Stack](https://skillicons.dev/icons?i=js,react,postgres,express,nodejs,css,docker,materialui)
 
 ### Back End
 
