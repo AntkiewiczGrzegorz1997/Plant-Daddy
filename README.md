@@ -7,9 +7,14 @@ Whether you're a succulent connoisseur, a tropical paradise curator, or a proud 
 But that's not all! Our thriving community of plant enthusiasts is here to celebrate your botanical achievements. Connect with fellow green thumbs, share gardening tips, and explore the diverse flora of Plant Daddy. 🌼🌱 Experience the joy of swapping plant stories, marveling at stunning foliage, and getting inspired to expand your own garden. In Plant Daddy, your love for plants knows no bounds. Join us in cultivating a digital garden of friendship and inspiration. Let your plant passion bloom on Plant Daddy!
 
 ## How it looks
+<img src='screens/Screenshot 2023-10-25 at 14.56.01.png' height=400> 
+<img src='screens/service_popup.png' height=200> <img src='screens/Screenshot 2023-10-25 at 14.56.27.png' height=200> <img src='screens/Screenshot 2023-10-25 at 14.56.39.png' height=200> 
 
 
-
+<img src='screens/Screenshot 2023-10-25 at 14.56.56.png' height=200>
+<img src='screens/Screenshot 2023-10-25 at 14.57.09.png' height=200>
+<img src='screens/Screenshot 2023-10-25 at 14.56.56.png' height=200>
+<img src='screens/Screenshot 2023-10-25 at 14.56.56.png' height=200>
 ## Getting Started
 
 To get started with Plant Daddy, follow these simple steps:
