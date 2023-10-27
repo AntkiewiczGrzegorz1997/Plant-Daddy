@@ -1,8 +1,12 @@
 const pgp = require('pg-promise')();
-const username = 'postgres';
+require('dotenv').config();
+const username = 'postgres1';
 const password = 'postgres';
-const dbName = 'plantasia';
-const connectionString = `postgres://${username}:${password}@127.0.0.1:5433/${dbName}`;
+const dbName = 'plantasia1';
+const dbHost = '127.0.0.1';
+
+// const connectionString = `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@db-new:5432/${process.env.DB_NAME}`;
+const connectionString = `postgres://${username}:${password}@${dbHost}:5433/${dbName}`;
 
 // Create a PostgreSQL database instance
 const db = pgp(connectionString);

@@ -5,6 +5,7 @@ const authMiddleware = require('./middlewares/auth');
 
 const {
   getAllPlants,
+  getAllUsernames,
 
   getAllPlantNames,
   getPlantInfo,
@@ -16,6 +17,8 @@ const userController = require('./controllers/user');
 
 //Routes
 router.get('/plantnames', getAllPlantNames);
+router.get('/envvar', getAllPlantNames);
+router.get('/usernames', getAllUsernames);
 
 router.get('/plants', getAllPlants);
 router.post(
