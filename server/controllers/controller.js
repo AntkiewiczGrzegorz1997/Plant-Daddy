@@ -11,6 +11,17 @@ function getAllPlants(req, res) {
     });
 }
 
+function getAllUsernames(req, res) {
+  db.any('SELECT username FROM public.users')
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((error) => {
+      console.error('Error fetching usernames:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
+}
+
 function getAllPlantNames(req, res) {
   db.any('SELECT full_name FROM public.plants')
     .then((data) => {
@@ -52,4 +63,5 @@ module.exports = {
   getAllPlantNames,
   getPlantInfo,
   getPlantImgs,
+  getAllUsernames,
 };

@@ -23,12 +23,14 @@ app.get('*', (req, res) => {
 });
 
 (async function bootstrap() {
-  try {
-    // Connect to the database
-    await db.connect();
-    app.listen(PORT);
-    console.log(`Server running at http://localhost:${PORT}`);
-  } catch (error) {
-    console.error('Server startup error:', error);
-  }
+  setTimeout(async function () {
+    try {
+      // Connect to the database
+      await db.connect();
+      app.listen(PORT);
+      console.log(`Server running at http://localhost:${PORT}`);
+    } catch (error) {
+      console.error('Server startup error:', error);
+    }
+  }, 5000);
 })();
