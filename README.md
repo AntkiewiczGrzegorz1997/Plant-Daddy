@@ -38,9 +38,9 @@ docker pull grzegorzant/server-new2:latest
 docker pull grzegorzant/db-new:latest
 ```
 
-### Prepare **docker-compose.yaml** file.
+### Prepare **`docker-compose.yaml`** file.
 
-Download the /*docker-compose.yaml*/ file and place it in the folder you pulled the docker containers to. 
+Download the **`docker-compose.yaml`** file and place it in the folder you pulled the docker containers to. 
 
 ### Run the App
 
