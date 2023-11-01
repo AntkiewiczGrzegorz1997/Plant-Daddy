@@ -6,59 +6,60 @@ Whether you're a succulent connoisseur, a tropical paradise curator, or a proud 
 
 But that's not all! Our thriving community of plant enthusiasts is here to celebrate your botanical achievements. Connect with fellow green thumbs, share gardening tips, and explore the diverse flora of Plant Daddy. 🌼🌱 Experience the joy of swapping plant stories, marveling at stunning foliage, and getting inspired to expand your own garden. In Plant Daddy, your love for plants knows no bounds. Join us in cultivating a digital garden of friendship and inspiration. Let your plant passion bloom on Plant Daddy!
 
+## How it looks
+<img src='screens/Screenshot 2023-10-25 at 14.56.01.png' height=200> <img src='screens/Screenshot 2023-10-25 at 14.56.27.png' height=200> <img src='screens/Screenshot 2023-10-25 at 14.56.39.png' height=200> 
+<img src='screens/Screenshot 2023-10-25 at 14.56.56.png' height=200>
+<img src='screens/Screenshot 2023-10-25 at 14.57.09.png' height=200>
+<img src='screens/Screenshot 2023-10-25 at 15.01.29.png' height=200>
+<img src='screens/Screenshot 2023-10-25 at 15.01.46.png' height=200>
+<img src='screens/Screenshot 2023-10-25 at 15.02.07.png'  height=200>
+<img src='screens/Screenshot 2023-10-25 at 14.58.24.png' height=200>
+
+
 ## Getting Started
 
 To get started with Plant Daddy, follow these simple steps:
 
-#### Clone the repository
+### Install Docker Desktop
+
+[Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+### Pull Docker containers
+
+In the terminal navigate the folder from which you would like to clone start the app. 
+After pull 3 containers from the docker hub as presented below:
 
 ```bash
-git clone [repository_link]
+#example folder
+cd plantDaddy
+
+docker pull grzegorzant/client-new:latest
+docker pull grzegorzant/server-new2:latest
+docker pull grzegorzant/db-new:latest
 ```
 
-### Client
+### Prepare **`docker-compose.yaml`** file.
+
+Download the **`docker-compose.yaml`** file and place it in the folder you pulled the docker containers to. 
+
+### Run the App
+
+In the terminal run:
 
 ```bash
-#Open the project folder
-#Navigate to the `client` folder in your terminal.
-cd client
-#Install all the required packages
-npm install
+docker-compose up
 ```
 
-Make sure in the `client/api-services/`folder you include a file `api-access.js` with your api keys for listed APIs as shown in the screenshot below:
+### Open the App
 
-```bash
-#Start the client application:
-npm start
-```
+Click on the following link (or type "localhost:3001" in your browser):
 
-### Server
+[Open the Link](http://localhost:3001)
 
-```bash
-
-#Navigate to the `server` folder in your terminal:
-cd server
-#Install all the required libraries:
-npm install
-#Run the server by running:
-nodemon index.js`
-```
-
-### Database
-
-```bash
-#run:
-psql -U username -d plantasia < dump-plantasia-202309271452.sql
-# with dump-plantasia-202309271452.sql from:
-```
-
-`database/dump-plantasia-202309271452.sql`
-to create your own DB.
 
 ## Tech Stack
 
-![Tech Stack](https://skillicons.dev/icons?i=js,react,postgres,express,postgres,nodejs,css,docker,materialui)
+![Tech Stack](https://skillicons.dev/icons?i=js,react,postgres,express,nodejs,css,docker,materialui)
 
 ### Back End
 
