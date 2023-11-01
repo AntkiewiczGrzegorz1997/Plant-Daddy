@@ -53,7 +53,7 @@ docker-compose up
 ### Open the App
 
 Click on the following link (or type "localhost:3001" in your browser):
-[Open the Link](localhost:3001)
+[Open the Link](http://localhost:3001)
 
 
 ## Tech Stack
