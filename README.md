@@ -22,7 +22,7 @@ To get started with Plant Daddy, follow these simple steps:
 
 ### Install Docker Desktop
 
-(Docker Desktop)[https://www.docker.com/products/docker-desktop/]
+[Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ### Pull Docker containers
 
@@ -53,7 +53,7 @@ docker-compose up
 ### Open the App
 
 Click on the following link (or type "localhost:3001" in your browser):
-(Open the Link)[localhost:3001]
+[Open the Link](localhost:3001)
 
 
 ## Tech Stack
