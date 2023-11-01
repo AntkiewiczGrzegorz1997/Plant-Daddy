@@ -20,51 +20,41 @@ But that's not all! Our thriving community of plant enthusiasts is here to celeb
 
 To get started with Plant Daddy, follow these simple steps:
 
-#### Clone the repository
+### Install Docker Desktop
+
+(Docker Desktop)[https://www.docker.com/products/docker-desktop/]
+
+### Pull Docker containers
+
+In the terminal navigate the folder from which you would like to clone start the app. 
+After pull 3 containers from the docker hub as presented below:
 
 ```bash
-git clone [repository_link]
+#example folder
+cd plantDaddy
+
+docker pull grzegorzant/client-new:latest
+docker pull grzegorzant/server-new2:latest
+docker pull grzegorzant/db-new:latest
 ```
 
-### Client
+### Prepare **docker-compose.yaml** file.
+
+Download the **docker-compose.yaml** file and place it in the folder you pulled the docker containers to. 
+
+### Run the App
+
+In the terminal run:
 
 ```bash
-#Open the project folder
-#Navigate to the `client` folder in your terminal.
-cd client
-#Install all the required packages
-npm install
+docker-compose up
 ```
 
-Make sure in the `client/api-services/`folder you include a file `api-access.js` with your api keys for listed APIs as shown in the screenshot below:
+### Open the App
 
-```bash
-#Start the client application:
-npm start
-```
+Click on the following link (or type "localhost:3001" in your browser):
+(Open the Link)[localhost:3001]
 
-### Server
-
-```bash
-
-#Navigate to the `server` folder in your terminal:
-cd server
-#Install all the required libraries:
-npm install
-#Run the server by running:
-nodemon index.js`
-```
-
-### Database
-
-```bash
-#run:
-psql -U username -d plantasia < dump-plantasia-202309271452.sql
-# with dump-plantasia-202309271452.sql from:
-```
-
-`database/dump-plantasia-202309271452.sql`
-to create your own DB.
 
 ## Tech Stack
 
