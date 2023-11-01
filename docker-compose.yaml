@@ -2,18 +2,18 @@ version: '3'
 
 services:
   client-new:
-    # build:
-    #   context: ./client
-    #   dockerfile: Dockerfile
-    image: grzegorzant/client-new:latest
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    # image: grzegorzant/client-new:latest
     ports:
       - '3001:3001'
 
   server-new2:
-    # build:
-    #   context: ./server
-    #   dockerfile: Dockerfile
-    image: grzegorzant/server-new2:latest
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    # image: grzegorzant/server-new2:latest
     ports:
       - '3000:3000'
     environment:
@@ -27,10 +27,10 @@ services:
       - db-new
 
   db-new:
-    # build:
-    #   context: ./database
-    #   dockerfile: Dockerfile
-    image: grzegorzant/db-new:latest
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    # image: grzegorzant/db-new:latest
     ports:
       - '5433:5432'
     environment:
