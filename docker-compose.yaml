@@ -32,7 +32,8 @@ services:
     #   dockerfile: Dockerfile
     image: grzegorzant/db-new:latest
     ports:
-      - '5433:5432'
+      # - '5433:5432'
+      - '5432:5432'
     environment:
       - POSTGRES_HOST=127.0.0.1
       - POSTGRES_USER=postgres1
@@ -40,6 +41,7 @@ services:
       - POSTGRES_DB=plantasia1
     volumes:
       - pgdata:/var/lib/postgresql/data
+    mem_limit: 512m
 
 volumes:
   pgdata:
