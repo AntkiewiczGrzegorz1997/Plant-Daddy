@@ -16,6 +16,18 @@ export async function getAllPlantNames() {
   }
 }
 
+export async function getAllUsernames() {
+  try {
+    const response = await fetch(`${url}/usernames`);
+
+    const data = await response.json();
+
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 export async function getUserPlants(accessToken) {
   try {
     const response = await fetch(`${url}/profile`, {
