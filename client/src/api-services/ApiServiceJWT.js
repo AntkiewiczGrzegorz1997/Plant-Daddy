@@ -1,4 +1,6 @@
-const BASE_URL = 'http://localhost:3000';
+// const BASE_URL = 'http://localhost:3000';
+
+const BASE_URL = 'http://server-new2:3000';
 
 const apiServiceJWT = {};
 

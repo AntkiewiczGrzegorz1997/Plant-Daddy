@@ -2,8 +2,8 @@ import { apis } from './api-access';
 
 const apiUrl = apis.perenual.apiUrl;
 const apiKey = apis.perenual.apiKey;
-const url = 'http://localhost:3000';
-
+// const url = 'http://localhost:3000';
+const url = 'http://server-new2:3000';
 export async function getAllPlantNames() {
   try {
     const response = await fetch(`${url}/plantnames`);
