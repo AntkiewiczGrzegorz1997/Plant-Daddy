@@ -13,7 +13,13 @@ const corsConfig = {
   credentials: true,
 };
 
+const deploymentCorsConfig = {
+  origin: 'http:/18.159.59.226:3001',
+  credentials: true,
+};
+
 app.use(cors(corsConfig));
+app.use(cors(deploymentCorsConfig));
 app.use(express.json());
 
 app.use(router);
