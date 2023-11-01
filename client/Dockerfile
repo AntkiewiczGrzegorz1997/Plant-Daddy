@@ -1,16 +1,15 @@
-FROM node:14-alpine
+FROM node:18-alpine
 
-ENV NODE_ENV development
+WORKDIR /app
 
-WORKDIR /client
-
-COPY client/package.json client/package-lock.json
+COPY package*.json ./
 
 RUN npm install
 
-COPY client ./
+COPY . ./
+
+ENV PORT 3001
 
 EXPOSE 3001
 
-RUN npm start
-
+CMD ["npm", "start"]

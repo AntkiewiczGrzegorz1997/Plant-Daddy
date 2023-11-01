@@ -1,8 +1,8 @@
 export const styles = {
   style1: {
-    width: '100%',
+    width: '25vw',
     borderRadius: '4px',
-    backgroundColor: '#776472',
+    backgroundColor: '#1b1c25',
     '& input': {
       color: 'white',
     },
@@ -29,11 +29,12 @@ export const styles = {
   },
   style2: {
     borderRadius: '4px',
-    backgroundColor: 'transparent',
-    color: '#776472',
+    backgroundColor: '#1b1c25',
+    color: '#1b1c25',
     width: '25vw',
     marginTop: '5vh',
     marginBottom: '5vh',
+
     '& input': {
       color: 'white',
     },
@@ -49,20 +50,23 @@ export const styles = {
   },
 
   style3: {
-    backgroundColor: '#445552',
+    backgroundColor: '#928bf5',
     width: '25vw',
     color: '#FFFFFF',
     height: '7vh',
     '&:hover': {
-      backgroundColor: '#294d4a',
+      backgroundColor: '#c0b4fc',
     },
   },
 
   style4: {
     width: '25vw',
     borderRadius: '4px',
-    backgroundColor: 'transparent',
+    backgroundColor: '#1b1c25',
+    marginLeft: '4vw',
+    marginRight: '4vw',
     color: 'white',
+
     '& input': {
       color: 'white',
     },
@@ -82,8 +86,10 @@ export const styles = {
   style5: {
     width: '25vw',
     borderRadius: '4px',
-    backgroundColor: 'transparent',
+    backgroundColor: '#1b1c25',
     color: '#776472',
+    marginLeft: '4vw',
+    marginRight: '4vw',
     '& input': {
       color: 'white',
     },
@@ -99,12 +105,14 @@ export const styles = {
     marginBottom: '4vh',
   },
   style6: {
-    backgroundColor: '#445552',
+    backgroundColor: '#928bf5',
     width: '25vw',
     color: '#FFFFFF',
     height: '7vh',
+    marginLeft: '4vw',
+    marginRight: '4vw',
     '&:hover': {
-      backgroundColor: '#294d4a',
+      backgroundColor: '#c0b4fc',
     },
     marginBottom: '4vh',
   },

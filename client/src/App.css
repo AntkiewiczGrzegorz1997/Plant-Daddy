@@ -1,9 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
+  --black-background: #1e1e35;
+  --dark2: #1b1c25;
   --light-purple: #a799b7;
   --purple: #9888a5;
-  --violet: #776472;
+  --violet: #453d80;
   --light-green: #445552;
-  --green: #294d4a;
+  --green: #948cf9;
   --font-color: white;
   --font-color-less: #bbb2b8;
   --small: 10px;
@@ -11,23 +17,9 @@
   --large: 30px;
 }
 
-.Header {
-  background-color: var(--purple);
-  width: 100vw;
-  border-bottom: solid 1px white;
-}
-
-.PlantContainer {
-  background-color: var(--violet);
-  height: 90vh;
-  width: 100vw;
-}
-
 html,
 body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .App {
@@ -39,23 +31,6 @@ body {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-.Username {
-  margin-left: 2vw;
-  color: var(--light-green);
-}
-
-.hamburger {
-  display: block;
-  cursor: pointer;
-  margin-top: -1.6vh;
-  align-items: center;
-}
-.menu-icon {
-  margin-top: 1vh;
-  margin-bottom: -0.5vh;
-  transform: scale(0.5);
 }
 
 .material-symbols-outlined {
@@ -83,14 +58,6 @@ body {
   color: var(--font-color);
 }
 
-.navbar-flex {
-  display: flex;
-  justify-content: space-between;
-  background-color: var(--violet);
-  border-bottom: solid 1px white;
-  width: 100%;
-}
-
 .navbar {
   background-color: var(--violet);
   border-radius: 5px;
@@ -109,9 +76,6 @@ body {
 .link-component {
   cursor: pointer;
   color: var(--green);
-}
-
-.navbar > div:nth-child(-n + 2) {
 }
 
 .menu-nav {
@@ -145,9 +109,7 @@ body {
   height: 2.8vh;
   display: flex;
   justify-content: flex-start;
-
   border-radius: 5px;
-
   margin-right: 2vw;
   margin-top: 1vh;
 }
@@ -171,36 +133,8 @@ body {
   z-index: 2;
 }
 
-.AddPlant {
-  height: 100vh;
-  width: 100vw;
-  background-color: var(--violet);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.AddPlantHeader {
-  background-color: var(--purple);
-  width: 100vw;
-  background-color: var(--violet);
-  display: flex;
-  justify-content: space-between;
-}
-
-.plant-upload-form {
-  background-color: var(--violet);
-  width: 50vw;
-  margin-top: 4vh;
-  height: 80vh;
-  border-radius: 3px;
-  color: var(--green);
-  border: solid var(--font-color) 1px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+.darkbackground {
+  background-color: var(--dark2);
 }
 
 .plant-upload-form > p {
@@ -223,12 +157,16 @@ input {
   justify-content: center;
 }
 form > button {
-  background-color: var(--violet);
+  background-color: var(--dark2);
   border: 0px;
   height: 10vh;
   width: 10vw;
   cursor: pointer;
   margin-top: 2vh;
+}
+
+form > p {
+  font-weight: bold;
 }
 
 .icons-flex {
@@ -247,8 +185,8 @@ form > button {
   border-radius: 5px;
   overflow-y: scroll;
   justify-content: center;
-  background-color: var(--light-green);
   border: 1px solid #ccc;
+  background-image: linear-gradient(var(--black-background), var(--violet));
   padding: 10px;
   z-index: 999;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -267,7 +205,7 @@ form > button {
 }
 input {
   height: 5vh;
-  background-color: var(--light-purple);
+  background-color: var(--dark2);
   border-width: 0;
 }
 
@@ -277,10 +215,9 @@ input {
 }
 .image-scroll {
   display: flex;
-  width: 42vw;
+  width: 55vw;
   height: 100%;
   overflow-x: scroll;
-  margin-top: -1vh;
 }
 
 .image-container {
@@ -306,14 +243,6 @@ input {
 
 .image-container:hover .delete-button {
   opacity: 1;
-}
-
-.plant-wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding-top: 3vh;
-  padding-left: 1vw;
 }
 
 .userPlants-big {
@@ -342,12 +271,11 @@ input {
   z-index: 1000;
 }
 .popup {
-  background-color: var(--light-purple);
+  background-color: var(--dark2);
   padding: 20px;
   border-radius: 5px;
   width: 80vw;
   height: 80vh;
-
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1001;
 }
@@ -360,10 +288,8 @@ input {
 .popup-content > p {
   font-size: 30px;
   margin-block-start: 0;
-  font-family: Quattrocento, serif;
 }
 .popup-details > p {
-  font-family: 'Fanwood Text', serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5em;
@@ -464,7 +390,6 @@ input {
   padding: 2vh;
 }
 .plant-description > p {
-  font-family: 'Fanwood Text', serif;
   font-weight: 400;
   line-height: 1.755em;
   letter-spacing: 0em;
@@ -477,7 +402,6 @@ input {
   height: 15vh;
   width: 15vw;
   border: solid 1px;
-  border-color: var(--font-color);
   margin-bottom: 2vh;
 }
 
@@ -604,7 +528,6 @@ input {
   right: 10px;
   background-color: #007bff;
   color: #fff;
-  border: none;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
@@ -615,41 +538,32 @@ input {
 }
 
 .homepage {
-  background-color: var(--violet);
   display: flex;
   flex-direction: column;
-  padding-bottom: 20vh;
+  background-color: var(--dark2);
 }
+
+.gradient {
+  background-image: linear-gradient(var(--black-background), var(--violet));
+}
+
 .homepage-button {
-  background-color: var(--violet);
   color: var(--font-color-less);
-  border: none;
-  padding: 0;
-  margin: 2vw;
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
   font-size: 20px;
   transition: 200ms ease-out opacity 200ms ease-out background-color;
 }
 
-.brand-image {
-  transform: scale(0.7);
-  margin-bottom: 10vh;
-  width: 100vw;
-  height: auto;
+#plantimg {
+  height: 500px;
+  width: 500px;
+  margin-bottom: -5vh;
 }
 
-.homepage-navbar {
-  display: flex;
-  justify-content: center;
-  margin-right: 2vw;
-  background-color: var(--violet);
+.bottomhomepage {
+  background-color: var(--dark2);
 }
 
 .text-container {
-  margin-top: -10vh;
-  font-family: 'Fanwood Text', serif;
   font-weight: 400;
   line-height: 1.755em;
   letter-spacing: 0em;
@@ -660,7 +574,6 @@ input {
   font-size: 20px;
 }
 .text-container :nth-child(1) {
-  font-family: 'Quattrocento', serif;
   font-weight: 400;
   line-height: 1em;
   letter-spacing: 0.03em;
@@ -675,10 +588,6 @@ input {
   opacity: 1;
   color: var(--font-color);
 }
-.loginpage {
-  background-color: var(--violet);
-  height: 100vh;
-}
 
 .video-container {
   width: 640px;
@@ -686,14 +595,6 @@ input {
   overflow: hidden;
   transform: scale(1.42);
   margin-left: -1.92vw;
-}
-
-.login-content {
-  padding-top: 15vh;
-  padding-bottom: 10vh;
-  padding-left: 4vw;
-  display: flex;
-  margin-left: 0;
 }
 
 .form-login {
@@ -713,18 +614,10 @@ input {
   width: 30vw;
 }
 
-.regipage {
-  height: 100vh;
-  background-color: var(--violet);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 /*Registration*/
 
 .form-signup {
-  padding-top: 20vh;
+  padding-top: 16.5vh;
   display: flex;
   flex-direction: column;
 }
@@ -743,20 +636,6 @@ input {
   margin-top: 3vh;
 }
 
-.form-regi-title {
-  text-align: center;
-  width: 100%;
-  border-bottom: solid 1px white;
-}
-
-.Username {
-  margin-top: 4vh;
-
-  font-size: var(--large);
-  font-family: 'Fanwood Text', serif;
-  color: var(--font-color);
-}
-
 .MuiIconButton-root svg {
   fill: white;
 }
@@ -764,7 +643,7 @@ input {
 .Logout {
   height: 100vh;
   width: 100vw;
-  background-color: var(--violet);
+  background-color: var(--dark2);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -785,7 +664,4 @@ input {
   font-size: 30px;
   margin-left: 35vw;
   margin-top: 30vh;
-}
-.plant-container-single-big {
-  margin: 0.5vh 0.5vw;
 }

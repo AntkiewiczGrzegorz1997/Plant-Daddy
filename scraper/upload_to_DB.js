@@ -1,11 +1,11 @@
 const pgp = require('pg-promise')();
-const username = 'postgres';
+const username = 'postgres1';
 const password = 'postgres';
-const dbName = 'plantasia';
+const dbName = 'plantasia1';
 const fs = require('fs');
 const filePath = './combined_data.json';
 
-const connectionString = `postgres://${username}:${password}@localhost:5432/${dbName}`;
+const connectionString = `postgres://${username}:${password}@db-new:5432/${dbName}`;
 
 // Create a PostgreSQL database instance
 const db = pgp(connectionString);

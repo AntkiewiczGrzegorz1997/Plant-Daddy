@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  client-new:
+    # build:
+    #   context: ./client
+    #   dockerfile: Dockerfile
+    image: grzegorzant/client-new:latest
+    ports:
+      - '3001:3001'
+
+  server-new2:
+    # build:
+    #   context: ./server
+    #   dockerfile: Dockerfile
+    image: grzegorzant/server-new2:latest
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=127.0.0.1
+      - DB_USERNAME=postgres1
+      - DB_PASSWORD=postgres
+      - DB_NAME=plantasia1
+      - DB_PORT=5432
+    depends_on:
+      - db-new
+
+  db-new:
+    # build:
+    #   context: ./database
+    #   dockerfile: Dockerfile
+    image: grzegorzant/db-new:latest
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_HOST=127.0.0.1
+      - POSTGRES_USER=postgres1
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=plantasia1
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
